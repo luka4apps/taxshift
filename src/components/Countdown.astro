@@ -1,0 +1,11 @@
+---
+import { countdownText } from '../lib/dates.ts';
+import { buildToday } from '../lib/site.ts';
+
+interface Props {
+  date: string;
+}
+const { date } = Astro.props;
+---
+
+<span data-countdown data-date={date}>{countdownText(date, buildToday)}</span>

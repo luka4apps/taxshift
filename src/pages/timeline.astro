@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import DateList from '../components/DateList.astro';
+import { buildTimeline } from '../lib/timeline.ts';
+import { buildToday, getData } from '../lib/site.ts';
+
+const { measures, election } = getData();
+const items = buildTimeline(measures, election, buildToday);
+const past = items.filter((i) => i.isPast).reverse();
+const future = items.filter((i) => !i.isPast);
+---
+
+<Base title="Timeline of investor tax changes" description="Every key date: when each tax change was announced, passed and starts, plus the federal election window." current="timeline/">
+  <section class="wrap section">
+    <div class="section-head">
+      <p class="kicker">Coming up · nearest first</p>
+      <h1 class="display">Timeline</h1>
+      <p>Start dates, deadlines, Parliament milestones and the election window. Countdowns update daily.</p>
+    </div>
+    <DateList items={future} variant="full" />
+  </section>
+  <section class="wrap section">
+    <div class="section-head">
+      <p class="kicker">Already happened · newest first</p>
+      <h2 class="display">So far</h2>
+    </div>
+    <DateList items={past} variant="full" />
+  </section>
+</Base>
+
+<style>
+  h1 { font-size: clamp(56px, 10vw, 120px); }
+</style>

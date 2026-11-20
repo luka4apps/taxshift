@@ -1,0 +1,97 @@
+{
+  "id": "new-build-definition",
+  "title": "Legal test for what counts as a new build",
+  "shortTitle": "What counts as a new build",
+  "headline": "Proposed: a home is a new build if built on empty land, added to land, converted from non-residential use, or bought within 24 months of its first occupancy certificate.",
+  "summary": "Negative gearing is still allowed on new builds, but the current law leaves the definition to a ministerial instrument that has not been made. The Tax Reform No. 3 Bill would write four tests into the law. It passed the House on 29 October 2026 and is before the Senate.",
+  "category": "negative-gearing",
+  "jurisdiction": "federal",
+  "personas": [
+    "property"
+  ],
+  "priority": 7,
+  "announcedOn": "2026-05-12",
+  "effectiveDate": "2027-07-01",
+  "history": [
+    {
+      "date": "2026-05-12",
+      "stage": "announced",
+      "note": "Budget tax explainer describes new builds",
+      "sourceUrl": "https://budget.gov.au/content/factsheets/download/tax-explainers-negative-gearing-capital-gains-tax.pdf"
+    },
+    {
+      "date": "2026-08-03",
+      "stage": "draft",
+      "note": "Treasury consultation on draft definition",
+      "sourceUrl": "https://consult.treasury.gov.au/c2026-792170"
+    },
+    {
+      "date": "2026-10-14",
+      "stage": "bill-introduced",
+      "note": "Tax Reform No. 3 Bill, Schedule 5",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7554"
+    },
+    {
+      "date": "2026-10-29",
+      "stage": "passed-house",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7554"
+    }
+  ],
+  "bigStat": {
+    "value": "24 MTHS",
+    "caption": "window to buy a newly built home and still count it as new"
+  },
+  "shift": {
+    "from": "Left to a minister's instrument",
+    "to": "Four tests written into law"
+  },
+  "before": [
+    "The current Act lets the Minister decide by legislative instrument what a new residential dwelling is. None had been made as at 20 November 2026."
+  ],
+  "after": [
+    "If passed, a home is new if it is built on land with no dwelling, is an extra dwelling added to land, is converted from a non-residential building, or is bought within 24 months of its first certificate of occupancy where it was new for the seller.",
+    "The first certificate of occupancy must be issued at or after 7:30pm AEST 12 May 2026.",
+    "Specialist disability accommodation, community and public housing, active build-to-rent, and retirement villages and aged care would also be exempt from the negative gearing limit."
+  ],
+  "exemptions": [],
+  "actions": [
+    {
+      "text": "Buying off the plan or a recently completed home? Keep the certificate of occupancy date and your contract and settlement dates."
+    }
+  ],
+  "positions": [],
+  "sources": [
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7554",
+      "title": "Treasury Laws Amendment (Tax Reform No. 3) Bill 2026: bill homepage",
+      "publisher": "Parliament of Australia",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd024",
+      "title": "Bills Digest No. 24, 2026-27",
+      "publisher": "Parliamentary Library",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://consult.treasury.gov.au/c2026-792170",
+      "title": "Tax reform tranche 2 consultation",
+      "publisher": "The Treasury",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://budget.gov.au/content/factsheets/download/tax-explainers-negative-gearing-capital-gains-tax.pdf",
+      "title": "Tax explainer: negative gearing and capital gains tax",
+      "publisher": "Budget 2026-27, Australian Government",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    }
+  ],
+  "caveats": [
+    "The May Budget explainer described a 12-month window and excluded one-for-one knock-down rebuilds. The bill uses 24 months and treats some demolitions differently, so check the final law once passed."
+  ],
+  "lastVerified": "2026-11-20"
+}

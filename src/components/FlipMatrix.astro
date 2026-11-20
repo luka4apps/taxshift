@@ -1,0 +1,87 @@
+---
+import { flipRisk, STANCE_LABEL } from '../lib/risk.ts';
+import type { Election, Measure, Party, Stance } from '../lib/schema.ts';
+import { href } from '../lib/site.ts';
+
+interface Props {
+  measures: Measure[];
+  parties: Party[];
+  election: Election;
+}
+const { measures, parties, election } = Astro.props;
+const shown = parties.filter((p) => measures.some((m) => m.positions.some((x) => x.party === p.id)));
+const GLYPH: Record<Stance, string> = {
+  introduced: '■',
+  supports: '✓',
+  opposes: '✕',
+  'pledges-repeal': '↺',
+  'wants-stronger': '▲',
+  'wants-amendment': '≈',
+  'no-position': '–',
+};
+---
+
+<div class="matrix-wrap">
+  <table class="matrix">
+    <caption class="sr-only">Each party's stated position on each change. ↺ means it has pledged to repeal it.</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="kicker">Change</th>
+        {shown.map((p) => <th scope="col" class="kicker">{p.shortName}<span class="role">{p.role}</span></th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {
+        measures.map((m) => {
+          const risk = flipRisk(m, parties, election);
+          return (
+            <tr class={`level-${risk.level}`}>
+              <th scope="row">
+                <a href={href(`changes/${m.id}/`)} class="m">{m.shortTitle}</a>
+                <span class="h">{risk.headline}</span>
+              </th>
+              {shown.map((p) => {
+                const pos = m.positions.find((x) => x.party === p.id);
+                const stance: Stance = pos?.stance ?? 'no-position';
+                return (
+                  <td data-party={p.shortName} class={`st-${stance}`} title={pos?.summary}>
+                    <span class="g" aria-hidden="true">{GLYPH[stance]}</span>
+                    <span class="l">{STANCE_LABEL[stance]}</span>
+                  </td>
+                );
+              })}
+            </tr>
+          );
+        })
+      }
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .matrix { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; vertical-align: top; padding: var(--s3); border-bottom: var(--rule-thin) solid var(--ink); }
+  thead th { border-bottom: var(--rule-mid) solid var(--ink); }
+  .role { display: block; color: var(--muted); text-transform: none; letter-spacing: 0; }
+  tbody th { min-width: 220px; }
+  .m { font: 900 22px/1 var(--font-display); text-transform: uppercase; text-decoration: none; display: block; }
+  .h { display: block; font-size: 14px; color: var(--muted); margin-top: var(--s1); font-weight: 400; }
+  td { font-size: 14px; line-height: 1.3; }
+  .g { font-size: 22px; line-height: 1; display: block; margin-bottom: 2px; }
+  .st-pledges-repeal { background: var(--shift); color: var(--on-shift); }
+  .st-no-position { color: var(--muted); }
+  .st-wants-stronger .g, .st-wants-amendment .g { color: var(--shift); }
+  .st-pledges-repeal .g { color: inherit; }
+
+  /* Mobile: each change becomes a card with one row per party, no sideways scrolling. */
+  @media (max-width: 760px) {
+    thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    table, tbody, tr, th, td { display: block; width: 100%; }
+    tr { border-top: var(--rule-heavy) solid var(--ink); margin-bottom: var(--s5); }
+    tbody th { border-bottom: var(--rule-thin) solid var(--ink); padding-inline: 0; }
+    td { display: grid; grid-template-columns: 120px 28px 1fr; align-items: center; padding: var(--s2) 0; border-bottom: 1px solid var(--rule); }
+    td::before { content: attr(data-party); font: 500 12px var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
+    .g { margin: 0; font-size: 18px; }
+    .st-pledges-repeal { padding-inline: var(--s2); }
+  }
+</style>

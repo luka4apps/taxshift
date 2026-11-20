@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { formatDate } from '../lib/dates.ts';
+import { getData, href } from '../lib/site.ts';
+
+const { changelog, measures } = getData();
+const entries = [...changelog].sort((a, b) => b.date.localeCompare(a.date));
+const title = (id: string | null) => measures.find((m) => m.id === id)?.shortTitle;
+---
+
+<Base title="Change log" description="Every update to Taxshift's data, newest first." current="changelog/">
+  <section class="wrap section">
+    <div class="section-head">
+      <p class="kicker">Public record of every update</p>
+      <h1 class="display">Change log</h1>
+      <p>We check official sources every day. Material changes (status, dates, rates, party positions) are reviewed by a person before they go live. <a href={href('rss.xml')}>Follow by RSS</a>.</p>
+    </div>
+    <ol class="log">
+      {
+        entries.map((c) => (
+          <li class={`kind-${c.kind}`}>
+            <time class="mono" datetime={c.date}>{formatDate(c.date, 'long')}</time>
+            <div>
+              {c.measureId && <a class="kicker" href={href(`changes/${c.measureId}/`)}>{title(c.measureId)}</a>}
+              <p>{c.summary}</p>
+              {c.sourceUrl && <a class="kicker" href={c.sourceUrl} rel="noopener">Source</a>}
+            </div>
+            <span class="kicker k">{c.kind}</span>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</Base>
+
+<style>
+  h1 { font-size: clamp(56px, 10vw, 120px); }
+  .log { list-style: none; padding: 0; }
+  li { display: grid; gap: var(--s2); padding: var(--s4) 0; border-top: var(--rule-thin) solid var(--ink); }
+  li div { display: grid; gap: var(--s1); max-width: 70ch; }
+  .k { justify-self: start; border: var(--rule-thin) solid var(--ink); padding: 3px 8px; }
+  .kind-material .k { background: var(--shift); border-color: var(--shift); color: var(--on-shift); }
+  @media (min-width: 800px) { li { grid-template-columns: 200px 1fr auto; } }
+</style>

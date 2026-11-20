@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import { href, REPO_URL } from '../lib/site.ts';
+---
+
+<Base title="How Taxshift works" description="How we research, how we stay accurate and neutral, and what Taxshift is not." current="about/">
+  <section class="wrap section">
+    <div class="section-head">
+      <p class="kicker">Method, neutrality, limits</p>
+      <h1 class="display">How it works</h1>
+    </div>
+    <div class="prose cols">
+      <section>
+        <h2 class="display">Checked every day</h2>
+        <p>Every morning an AI research agent checks Parliament's bill pages, the Federal Register of Legislation, the ATO, Treasury and the parties' own statements for anything new on each tracked change, and for new changes.</p>
+        <p>Routine updates, such as a new source or a fresh "last checked" date, publish automatically. Material changes to a status, date, rate or party position wait until a person has reviewed them. Every update is listed in the <a href={href('changelog/')}>change log</a>.</p>
+      </section>
+      <section>
+        <h2 class="display">Sources, ranked</h2>
+        <ol>
+          <li><strong>Official:</strong> legislation, Parliament (bills, digests, committee reports), ATO, Treasury, Budget papers, AEC.</li>
+          <li><strong>Parties and ministers:</strong> media releases, speeches and policy pages, used for what each side says it will do.</li>
+          <li><strong>Media and professional bodies:</strong> used to corroborate, never as the only source for a status, date or rate.</li>
+        </ol>
+        <p>Where sources disagree, we say so in "Known unknowns" rather than guess.</p>
+      </section>
+      <section>
+        <h2 class="display">Neutral by design</h2>
+        <p>No party colours, no predictions, no polls. Party positions are paraphrased or quoted from the party's own statements, with a link and date. If you think we've misstated a position, <a href={`${REPO_URL}/issues/new`}>tell us</a>.</p>
+      </section>
+      <section>
+        <h2 class="display">What this isn't</h2>
+        <p>Taxshift is general information. It is not financial, tax or legal advice, and it doesn't know your circumstances. The calculator gives rough estimates under simplified assumptions. Talk to a registered tax agent or licensed financial adviser before you act.</p>
+        <p>All data is open: it lives as plain JSON files in the <a href={REPO_URL}>public repository</a>.</p>
+      </section>
+    </div>
+  </section>
+</Base>
+
+<style>
+  h1 { font-size: clamp(56px, 10vw, 120px); }
+  .cols { display: grid; gap: var(--s6); max-width: none; }
+  .cols section { border-top: var(--rule-mid) solid var(--ink); padding-top: var(--s3); display: grid; gap: var(--s3); max-width: 68ch; }
+  h2 { font-size: 40px; }
+  ol { padding-left: 1.3em; display: grid; gap: var(--s2); }
+  @media (min-width: 960px) { .cols { grid-template-columns: 1fr 1fr; } }
+</style>

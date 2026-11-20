@@ -1,0 +1,11 @@
+{
+  "lastHeld": "2025-05-03",
+  "earliestLikely": "2027-08-07",
+  "latestPossible": "2028-09-23",
+  "announcedDate": null,
+  "note": "No date announced. The earliest joint House and half-Senate election is Saturday 7 August 2027. The latest practical joint election is 20 May 2028; the latest House-only polling day is 23 September 2028.",
+  "sources": [
+    { "url": "https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Parliamentary_Library/Research/FlagPost/2025/August/When_is_the_next_federal_election", "title": "When is the next federal election?", "publisher": "Parliamentary Library", "tier": 1, "accessed": "2026-11-20" },
+    { "url": "https://aec.gov.au/redistributions/entitlement/past-determinations.html", "title": "Past determinations (election and first meeting dates)", "publisher": "Australian Electoral Commission", "tier": 1, "accessed": "2026-11-20" }
+  ]
+}

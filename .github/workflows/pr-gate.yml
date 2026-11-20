@@ -1,0 +1,62 @@
+name: PR gate
+
+# Publishing gate (ADR-10/11). Every PR must validate, test and build.
+# Research-bot PRs (branch bot/*) that change only minor data are auto-merged and deployed.
+# Anything material (status, dates, rates, party positions, new measures, or any non-data file)
+# is labelled needs-review and waits for the owner.
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+  issues: write
+
+concurrency:
+  group: pr-gate-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PR: ${{ github.event.pull_request.number }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run validate
+      - run: npm test
+      - run: npm run build
+      - run: npm run test:built
+
+      - id: classify
+        run: node scripts/classify-pr.ts --base origin/${{ github.base_ref }} --summary classification.md
+
+      - name: Post the classification on the PR
+        run: gh pr comment "$PR" --body-file classification.md
+
+      - name: Auto-merge minor research updates and deploy
+        if: steps.classify.outputs.material == 'false' && startsWith(github.head_ref, 'bot/')
+        run: |
+          gh pr merge "$PR" --squash --delete-branch
+          gh workflow run deploy.yml --ref main
+
+      - name: Tell the owner when a research PR breaks the checks
+        if: failure() && startsWith(github.head_ref, 'bot/')
+        run: gh pr comment "$PR" --body "@${{ github.repository_owner }} this research update failed validation or tests, so it was not published. The site keeps the last good data."
+
+      - name: Ask the owner to review material changes
+        if: steps.classify.outputs.material == 'true'
+        run: |
+          gh label create needs-review --color E5007D --description "Material change: owner must approve" --force
+          gh pr edit "$PR" --add-label needs-review
+          gh pr comment "$PR" --body "@${{ github.repository_owner }} material change: please review the facts and sources above, then merge (or close) from GitHub mobile."

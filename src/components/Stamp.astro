@@ -1,0 +1,28 @@
+---
+import type { DisplayStatus } from '../lib/status.ts';
+
+interface Props {
+  status: DisplayStatus;
+  size?: 'md' | 'lg';
+}
+const { status, size = 'md' } = Astro.props;
+---
+
+<span class={`stamp tone-${status.tone} size-${size}`} title={status.label}>
+  <span class="sr-only">Status: </span>{status.stamp}
+</span>
+
+<style>
+  /* Status is carried by shape and fill, not colour alone: solid = in force, magenta outline = law coming,
+     dashed = proposal, struck = dead. */
+  .stamp {
+    display: inline-block; transform: rotate(-4deg); white-space: nowrap;
+    font: 900 22px/1 var(--font-display); text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 5px 10px 3px; border: 4px solid var(--ink);
+  }
+  .size-lg { font-size: 34px; padding: 8px 16px 5px; border-width: 5px; }
+  .tone-in-force { background: var(--ink); color: var(--paper); }
+  .tone-law-pending { border-color: var(--shift); color: var(--shift); }
+  .tone-proposed { border-style: dashed; }
+  .tone-dead { border-color: var(--muted); color: var(--muted); text-decoration: line-through; }
+</style>

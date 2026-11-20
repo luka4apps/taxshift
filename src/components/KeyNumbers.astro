@@ -1,0 +1,46 @@
+---
+import Countdown from './Countdown.astro';
+import { formatDate } from '../lib/dates.ts';
+import type { Summary } from '../lib/summary.ts';
+import { href } from '../lib/site.ts';
+
+interface Props {
+  summary: Summary;
+}
+const { summary: s } = Astro.props;
+---
+
+<dl class="numbers">
+  <div><dt class="kicker">Passed into law</dt><dd class="display">{s.law}</dd></div>
+  <div><dt class="kicker">Still proposals</dt><dd class="display">{s.proposed}</dd></div>
+  <div class="hot"><dt class="kicker">With a repeal pledge</dt><dd class="display">{s.repealPledged}</dd></div>
+  {
+    s.nextStart && (
+      <div class="next">
+        <dt class="kicker">Next start date</dt>
+        <dd>
+          <span class="display">{formatDate(s.nextStart.date)}</span>
+          <span class="mono">
+            <a href={href(`changes/${s.nextStart.measureId}/`)}>{s.nextStart.title}</a> · <Countdown date={s.nextStart.date} />
+          </span>
+        </dd>
+      </div>
+    )
+  }
+</dl>
+
+<style>
+  .numbers { display: grid; grid-template-columns: repeat(3, 1fr); border-block: var(--rule-mid) solid var(--ink); }
+  .numbers > div { padding: var(--s4) var(--s3) var(--s4) 0; display: grid; gap: var(--s2); align-content: start; }
+  .numbers > div + div { border-left: var(--rule-thin) solid var(--ink); padding-left: var(--s3); }
+  dd.display { font-size: clamp(64px, 10vw, 120px); line-height: 0.8; }
+  .hot dd { color: var(--shift); }
+  .next { grid-column: 1 / -1; border-left: 0 !important; padding-left: 0 !important; border-top: var(--rule-thin) solid var(--ink); }
+  .next dd { display: grid; gap: var(--s1); }
+  .next .display { font-size: clamp(44px, 7vw, 72px); line-height: 0.9; }
+  .next .mono { font-size: 15px; }
+  @media (min-width: 900px) {
+    .numbers { grid-template-columns: repeat(3, 1fr) 2fr; }
+    .next { grid-column: auto; border-top: 0; border-left: var(--rule-thin) solid var(--ink) !important; padding-left: var(--s4) !important; }
+  }
+</style>

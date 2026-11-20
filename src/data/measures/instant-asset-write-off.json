@@ -1,0 +1,101 @@
+{
+  "id": "instant-asset-write-off",
+  "title": "$20,000 instant asset write-off made permanent",
+  "shortTitle": "$20k instant asset write-off",
+  "headline": "Small businesses with turnover under $10m can immediately deduct each asset costing under $20,000, permanently, from 1 July 2026.",
+  "summary": "The $20,000 instant asset write-off for small businesses is now permanent instead of being renewed one year at a time. Without the change, the threshold would have fallen back to $1,000 on 1 July 2026.",
+  "category": "business",
+  "jurisdiction": "federal",
+  "personas": [
+    "business"
+  ],
+  "priority": 8,
+  "announcedOn": "2026-05-12",
+  "effectiveDate": "2026-07-01",
+  "history": [
+    {
+      "date": "2026-05-12",
+      "stage": "announced",
+      "note": "Budget 2026-27",
+      "sourceUrl": "https://budget.gov.au/content/04-tax-reform.htm"
+    },
+    {
+      "date": "2026-06-25",
+      "stage": "bill-introduced",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7502"
+    },
+    {
+      "date": "2026-08-18",
+      "stage": "passed-house",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7502"
+    },
+    {
+      "date": "2026-08-19",
+      "stage": "passed-parliament",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7502"
+    },
+    {
+      "date": "2026-08-26",
+      "stage": "royal-assent",
+      "note": "Treasury Laws Amendment (Tax Reform No. 2) Act 2026, No. 71",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7502"
+    }
+  ],
+  "bigStat": {
+    "value": "$20k",
+    "caption": "per asset, deducted in the year you start using it"
+  },
+  "shift": {
+    "from": "Renewed one year at a time",
+    "to": "Permanent $20,000 threshold"
+  },
+  "before": [
+    "The $20,000 threshold was extended a year at a time and would have fallen back to $1,000 on 1 July 2026."
+  ],
+  "after": [
+    "Small businesses with aggregated turnover under $10 million can immediately deduct each asset costing less than $20,000 that is first used or installed ready for use from 1 July 2026.",
+    "The small business pool's low-value threshold is also permanently $20,000, and the lock-out rule is suspended until 30 June 2027."
+  ],
+  "exemptions": [
+    "Businesses with aggregated turnover of $10 million or more.",
+    "Assets costing $20,000 or more, which go into the small business pool instead."
+  ],
+  "actions": [
+    {
+      "text": "Keep invoices showing each asset's cost and the date it was first used or installed ready for use."
+    }
+  ],
+  "positions": [],
+  "sources": [
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7502",
+      "title": "Treasury Laws Amendment (Tax Reform No. 2) Bill 2026: bill homepage",
+      "publisher": "Parliament of Australia",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2526/26bd070",
+      "title": "Bills Digest No. 70, 2025-26",
+      "publisher": "Parliamentary Library",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://budget.gov.au/content/04-tax-reform.htm",
+      "title": "Budget 2026-27: tax reform",
+      "publisher": "Australian Government",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/next-tranche-tax-reforms-pass-parliament",
+      "title": "Next tranche of tax reforms pass Parliament",
+      "publisher": "Treasurer",
+      "tier": 2,
+      "accessed": "2026-11-20"
+    }
+  ],
+  "caveats": [],
+  "lastVerified": "2026-11-20"
+}

@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import Countdown from '../components/Countdown.astro';
+import FlipMatrix from '../components/FlipMatrix.astro';
+import { formatDate } from '../lib/dates.ts';
+import { getData } from '../lib/site.ts';
+
+const { measures, parties, election } = getData();
+---
+
+<Base title="Could it flip? Party positions on investor tax changes" description="What Labor, the Coalition, the Greens, One Nation and the teals say they would do about each tax change, and what would have to happen." current="could-it-flip/">
+  <section class="wrap section">
+    <div class="section-head">
+      <p class="kicker">Party positions, from their own statements</p>
+      <h1 class="display">Could it flip?</h1>
+      <p>A law stays until Parliament changes it. A repeal needs a government willing to do it and the votes to pass it in both houses. Here's where each party stands.</p>
+    </div>
+    <FlipMatrix measures={measures} parties={parties} election={election} />
+    <p class="legend kicker">■ introduced it · ✓ supports · ✕ opposes · ↺ will repeal · ▲ wants it tougher · ≈ wants changes · – no stated position</p>
+  </section>
+
+  <section class="wrap section">
+    <div class="section-head">
+      <p class="kicker">The main trigger</p>
+      <h2 class="display">The next federal election</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <p class="kicker">Earliest likely</p>
+        <p class="display d">{formatDate(election.earliestLikely)}</p>
+        <p class="mono"><Countdown date={election.earliestLikely} /></p>
+      </div>
+      <div class="card hot">
+        <p class="kicker">Latest possible</p>
+        <p class="display d">{formatDate(election.latestPossible)}</p>
+        <p class="mono"><Countdown date={election.latestPossible} /></p>
+      </div>
+      <div class="card">
+        <p class="kicker">Date announced</p>
+        <p class="display d">{election.announcedDate ? formatDate(election.announcedDate) : 'Not yet'}</p>
+      </div>
+    </div>
+    <p class="prose note">{election.note}</p>
+    <h3 class="kicker steps-h">What a change of course would take</h3>
+    <ol class="prose steps">
+      <li><strong>Win government.</strong> A party that has pledged repeal would need to win the election.</li>
+      <li><strong>Pass the Senate.</strong> Repeal needs a bill passed by both houses. Who holds the Senate balance of power after the election matters as much as who wins the House.</li>
+      <li><strong>Set a start date.</strong> Repeal laws usually apply from a future date. No party has said yet how a repeal would treat property or shares bought in the meantime.</li>
+    </ol>
+    <ul class="prose sources">
+      {election.sources.map((s) => <li><a href={s.url} rel="noopener">{s.title}</a> <span class="muted">· {s.publisher}</span></li>)}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  h1 { font-size: clamp(56px, 10vw, 120px); }
+  .legend { margin-top: var(--s4); color: var(--muted); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--s4); }
+  .card { border-top: var(--rule-heavy) solid var(--ink); padding-top: var(--s3); display: grid; gap: var(--s2); }
+  .hot { border-top-color: var(--shift); }
+  .hot .d { color: var(--shift); }
+  .d { font-size: clamp(40px, 6vw, 64px); }
+  .note { margin-top: var(--s5); }
+  .steps-h { margin-top: var(--s6); }
+  .steps { padding-left: 1.4em; display: grid; gap: var(--s3); margin-top: var(--s3); }
+  .sources { margin-top: var(--s5); padding-left: 1.2em; font-size: 15px; }
+</style>

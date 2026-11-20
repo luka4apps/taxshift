@@ -1,0 +1,234 @@
+{
+  "id": "negative-gearing-new-builds",
+  "title": "Negative gearing limited to new builds and grandfathered property",
+  "shortTitle": "Negative gearing: new builds only",
+  "headline": "Established homes contracted after 7:30pm AEST 12 May 2026 lose negative gearing from 1 July 2027. Earlier purchases and new builds keep it.",
+  "summary": "For residential property acquired (by contract) at or after 7:30pm AEST on Budget night, net rental losses from the 2027-28 income year can only be used against residential rental income and residential gains. Excess losses carry forward. Properties held before the cut-off are grandfathered until sold, and new builds keep full negative gearing.",
+  "category": "negative-gearing",
+  "jurisdiction": "federal",
+  "personas": [
+    "property"
+  ],
+  "priority": 2,
+  "announcedOn": "2026-05-12",
+  "effectiveDate": "2027-07-01",
+  "effectiveLabel": "From the 2027-28 income year",
+  "history": [
+    {
+      "date": "2026-05-12",
+      "stage": "announced",
+      "note": "Budget night, 7:30pm AEST",
+      "sourceUrl": "https://budget.gov.au/content/factsheets/download/tax-explainers-negative-gearing-capital-gains-tax.pdf"
+    },
+    {
+      "date": "2026-05-28",
+      "stage": "bill-introduced",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7493"
+    },
+    {
+      "date": "2026-06-04",
+      "stage": "passed-house",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7493"
+    },
+    {
+      "date": "2026-06-25",
+      "stage": "passed-parliament",
+      "note": "Senate passed with amendments; House agreed",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7493"
+    },
+    {
+      "date": "2026-06-26",
+      "stage": "royal-assent",
+      "note": "Treasury Laws Amendment (Tax Reform No. 1) Act 2026, Schedule 2",
+      "sourceUrl": "https://www.legislation.gov.au/C2026A00049/asmade/text"
+    },
+    {
+      "date": "2026-08-26",
+      "stage": "royal-assent",
+      "note": "Amending Act No. 71 of 2026: grandfathering kept on a spouse's or co-owner's death and on relationship breakdown",
+      "sourceUrl": "https://www.legislation.gov.au/C2026A00071/asmade/text"
+    }
+  ],
+  "bigStat": {
+    "value": "7:30PM",
+    "caption": "12 May 2026 cut-off: contracted after it, losses quarantined"
+  },
+  "shift": {
+    "from": "Losses reduce your salary tax",
+    "to": "Losses only offset residential income"
+  },
+  "before": [
+    "Net rental losses on any residential investment property reduce tax on salary, business and other income."
+  ],
+  "after": [
+    "From 2027-28, for established homes contracted on or after 7:30pm AEST 12 May 2026, net losses can only offset residential rental income and residential gains.",
+    "Unused losses carry forward to later years (cancelled on bankruptcy) and can reduce the capital gain when the property is sold.",
+    "Grandfathered properties and new builds keep the old treatment. Losses for 2026-27 are still fully deductible for everyone."
+  ],
+  "exemptions": [
+    "Property you contracted to buy before 7:30pm AEST 12 May 2026, until sold. The contract date counts, not settlement.",
+    "New residential dwellings. The exact definition is still pending (see caveats).",
+    "Widely held unit trusts and complying super funds, including SMSFs.",
+    "Commercial property, shares and other assets.",
+    "From 2027-28, a surviving spouse or co-owner, or a former partner after relationship breakdown, keeps the grandfathered status."
+  ],
+  "workedExample": {
+    "title": "Example in the Act: Henrietta's quarantined losses",
+    "steps": [
+      "2028-29: $65,000 of deductions against $50,000 rent. $50,000 is deductible; $15,000 carries forward.",
+      "2029-30: $70,000 of deductions against $52,000 rent. Another $18,000 carries forward, total $33,000.",
+      "2030-31: $20,000 of deductions against $72,000 rent leaves $52,000 net rent, which absorbs the full $33,000."
+    ],
+    "result": "Nothing is lost, but the deductions are delayed until the property earns enough residential income.",
+    "sourceUrl": "https://www.legislation.gov.au/C2026A00049/asmade/text"
+  },
+  "actions": [
+    {
+      "text": "Keep proof of when each property contract was exchanged: grandfathering depends on the contract date, not settlement."
+    },
+    {
+      "text": "From 1 July 2027, keep separate income and expense records for each property and track any carried-forward losses."
+    },
+    {
+      "text": "Get advice before transferring property between spouses, trusts or companies, or changing joint ownership: a fresh acquisition can lose grandfathering."
+    },
+    {
+      "text": "Buying new? Keep the date the certificate of occupancy was first issued and your contract and settlement dates."
+    }
+  ],
+  "positions": [
+    {
+      "party": "labor",
+      "stance": "introduced",
+      "summary": "Legislated new-builds-only negative gearing from 1 July 2027 with what it calls generous grandfathering.",
+      "statedOn": "2026-06-25",
+      "sourceUrl": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/tax-reform-bill-passes-parliament"
+    },
+    {
+      "party": "coalition",
+      "stance": "pledges-repeal",
+      "summary": "Will \"axe Labor’s negative gearing changes\". Angus Taylor: a Coalition government he leads will repeal them. No repeal date or transition rules given.",
+      "statedOn": "2026-10-06",
+      "sourceUrl": "https://www.liberal.org.au/our-plan/tax"
+    },
+    {
+      "party": "greens",
+      "stance": "wants-stronger",
+      "summary": "Voted for the law but want grandfathering ended, saying it leaves billions in concessions in place.",
+      "statedOn": "2026-05-28",
+      "sourceUrl": "https://greens.org.au/news/media-release/labors-tax-changes-face-senate-inquiry"
+    },
+    {
+      "party": "one-nation",
+      "stance": "pledges-repeal",
+      "summary": "Would let every investor negatively gear up to two properties, new or established.",
+      "statedOn": "2026-10-19",
+      "sourceUrl": "https://thenightly.com.au/politics/pauline-hanson-declares-one-nation-will-reverse-labors-budget-taxes-and-restore-negative-gearing-c-23040418"
+    },
+    {
+      "party": "teals",
+      "stance": "supports",
+      "summary": "Broadly back limiting negative gearing for housing. Sophie Scamps has floated keeping it for one property to allow rentvesting.",
+      "statedOn": "2026-06-03",
+      "sourceUrl": "https://www.sophiescamps.com.au/_speaking_to_the_capital_gains_tax_reform_changes"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://budget.gov.au/content/factsheets/download/tax-explainers-negative-gearing-capital-gains-tax.pdf",
+      "title": "Tax explainer: negative gearing and capital gains tax",
+      "publisher": "Budget 2026-27, Australian Government",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.legislation.gov.au/C2026A00049/asmade/text",
+      "title": "Treasury Laws Amendment (Tax Reform No. 1) Act 2026",
+      "publisher": "Federal Register of Legislation",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.legislation.gov.au/C2026A00071/asmade/text",
+      "title": "Act No. 71 of 2026 (Tax Reform No. 2)",
+      "publisher": "Federal Register of Legislation",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7493",
+      "title": "Treasury Laws Amendment (Tax Reform No. 1) Bill 2026: bill homepage",
+      "publisher": "Parliament of Australia",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7554",
+      "title": "Tax Reform No. 3 Bill 2026: bill homepage",
+      "publisher": "Parliament of Australia",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd024",
+      "title": "Bills Digest No. 24, 2026-27",
+      "publisher": "Parliamentary Library",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.ato.gov.au/about-ato/new-legislation/in-detail/individuals/tax-reform-boosting-home-ownership-reforming-negative-gearing-and-capital-gains-tax",
+      "title": "Tax reform: boosting home ownership, reforming negative gearing and CGT",
+      "publisher": "Australian Taxation Office",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/next-tranche-tax-reforms-pass-parliament",
+      "title": "Next tranche of tax reforms pass Parliament",
+      "publisher": "Treasurer",
+      "tier": 2,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/tax-reform-bill-passes-parliament",
+      "title": "Tax reform bill passes Parliament",
+      "publisher": "Treasurer",
+      "tier": 2,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.liberal.org.au/our-plan/tax",
+      "title": "Our plan for lower taxes",
+      "publisher": "Liberal Party of Australia",
+      "tier": 2,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://greens.org.au/news/media-release/labors-tax-changes-face-senate-inquiry",
+      "title": "Labor’s tax changes face Senate inquiry",
+      "publisher": "Australian Greens",
+      "tier": 2,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://thenightly.com.au/politics/pauline-hanson-declares-one-nation-will-reverse-labors-budget-taxes-and-restore-negative-gearing-c-23040418",
+      "title": "One Nation will reverse Labor’s Budget taxes",
+      "publisher": "The Nightly",
+      "tier": 3,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.sophiescamps.com.au/_speaking_to_the_capital_gains_tax_reform_changes",
+      "title": "Speaking to the capital gains tax reform changes",
+      "publisher": "Dr Sophie Scamps MP",
+      "tier": 2,
+      "accessed": "2026-11-20"
+    }
+  ],
+  "caveats": [
+    "What counts as a new build is not settled in law. The Act leaves it to a ministerial instrument, and none was found as at 20 November 2026. The Tax Reform No. 3 Bill would set a 24-month test; it passed the House on 29 October 2026 and is before the Senate.",
+    "There is no official guidance yet on inheritance by someone other than a spouse or co-owner, or on refinancing and renovating a grandfathered property."
+  ],
+  "lastVerified": "2026-11-20"
+}

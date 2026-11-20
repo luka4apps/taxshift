@@ -1,0 +1,75 @@
+---
+import { formatDate, isStale, todayInSydney } from '../lib/dates.ts';
+import type { Meta } from '../lib/schema.ts';
+import { href } from '../lib/site.ts';
+
+interface Props {
+  meta: Meta;
+  current: string;
+  big: boolean;
+}
+const { meta, current, big } = Astro.props;
+const lastDay = todayInSydney(new Date(meta.lastChecked));
+const stale = isStale(meta.lastChecked);
+const nav: [string, string][] = [
+  ['', 'Changes'],
+  ['timeline/', 'Timeline'],
+  ['could-it-flip/', 'Could it flip?'],
+  ['calculator/', 'CGT calculator'],
+  ['glossary/', 'Glossary'],
+  ['changelog/', 'Change log'],
+  ['about/', 'About'],
+];
+---
+
+<header class="mast">
+  <div class="topbar">
+    <div class="wrap topbar-in">
+      <span class="kicker">Australian investor tax tracker</span>
+      <span class="kicker">Checked daily · last checked <time datetime={meta.lastChecked}>{formatDate(lastDay)}</time></span>
+    </div>
+  </div>
+  <div class="stale" role="status" data-stale data-last-checked={meta.lastChecked} hidden={!stale}>
+    <div class="wrap">
+      <strong>Heads up:</strong> our daily check hasn't run since {formatDate(lastDay)}. Facts may be out of date; follow the official sources on each page.
+    </div>
+  </div>
+  <div class={`wrap brand ${big ? 'is-big' : ''}`}>
+    <a href={href()} class="wordmark display" aria-label="Taxshift home">Tax<span>shift</span></a>
+    <nav aria-label="Main">
+      <ul>
+        {
+          nav.map(([path, label]) => (
+            <li>
+              <a href={href(path)} aria-current={current === path ? 'page' : undefined}>
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .topbar { background: var(--ink); color: var(--paper); }
+  .topbar-in { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s1) var(--s4); padding-block: var(--s2); }
+  .stale { background: var(--shift); color: var(--on-shift); padding-block: var(--s3); font-weight: 600; }
+  .brand { display: grid; gap: var(--s3); padding-block: var(--s4) var(--s3); border-bottom: var(--rule-heavy) solid var(--ink); }
+  .wordmark { font-size: clamp(56px, 11vw, 112px); text-decoration: none; justify-self: start; }
+  .is-big .wordmark { font-size: clamp(88px, 22vw, 260px); line-height: 0.8; }
+  .wordmark span { color: var(--shift); }
+  nav ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s1) var(--s2); }
+  nav a {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s3);
+    font: 500 13px/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em;
+    text-decoration: none; border: var(--rule-thin) solid transparent;
+  }
+  nav a:hover { border-color: var(--ink); }
+  nav a[aria-current='page'] { background: var(--ink); color: var(--paper); }
+  @media (min-width: 960px) {
+    .brand:not(.is-big) { grid-template-columns: auto 1fr; align-items: end; }
+    .brand:not(.is-big) nav ul { justify-content: flex-end; }
+  }
+</style>

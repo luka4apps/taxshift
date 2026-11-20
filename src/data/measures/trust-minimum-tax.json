@@ -1,0 +1,206 @@
+{
+  "id": "trust-minimum-tax",
+  "title": "30% minimum tax on discretionary (family) trusts",
+  "shortTitle": "Trust minimum tax (30%)",
+  "headline": "Proposed: family trust trustees pay at least 30% on trust income from 2028-29, credited to individual beneficiaries but not refunded. Not law yet.",
+  "summary": "The trustee of a discretionary trust would pay a minimum 30% tax on the trust's income. Individual beneficiaries get a non-refundable offset for it, so beneficiaries on rates below 30% effectively pay 30%. The bills passed the House on 29 October 2026 and are before the Senate.",
+  "category": "trusts",
+  "jurisdiction": "federal",
+  "personas": [
+    "business",
+    "property",
+    "shares"
+  ],
+  "priority": 5,
+  "announcedOn": "2026-05-12",
+  "effectiveDate": "2028-07-01",
+  "effectiveLabel": "Income years from 1 July 2028 (2028-29)",
+  "history": [
+    {
+      "date": "2026-05-12",
+      "stage": "announced",
+      "note": "Budget 2026-27",
+      "sourceUrl": "https://budget.gov.au/content/04-tax-reform.htm"
+    },
+    {
+      "date": "2026-09-03",
+      "stage": "draft",
+      "note": "Exposure draft released",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd024"
+    },
+    {
+      "date": "2026-10-14",
+      "stage": "bill-introduced",
+      "note": "Tax Reform No. 3 Bill and the minimum tax imposition bill",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7554"
+    },
+    {
+      "date": "2026-10-29",
+      "stage": "passed-house",
+      "note": "Third reading 91 to 45; Senate committee recommended passage on 13 November",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7554"
+    }
+  ],
+  "bigStat": {
+    "value": "30%",
+    "caption": "minimum tax on discretionary trust income"
+  },
+  "shift": {
+    "from": "Taxed at beneficiaries’ rates",
+    "to": "Trustee pays at least 30%"
+  },
+  "before": [
+    "Trust income flows through and is taxed at each beneficiary's marginal rate, so income can be directed to family members on low rates."
+  ],
+  "after": [
+    "If passed, the trustee pays at least 30% on the trust's minimum tax income from 2028-29.",
+    "Individual beneficiaries get a non-refundable offset for that tax. Company beneficiaries and exempt entities get no offset.",
+    "The trustee uses franking credits against the minimum tax; any excess is refunded to the trustee.",
+    "A roll-over from 1 July 2027 to 30 June 2030 lets trusts restructure into a company or fixed trust without income tax; stamp duty and GST can still apply."
+  ],
+  "exemptions": [
+    "Fixed trusts, widely held trusts, managed investment trusts and CCIVs.",
+    "Special disability trusts, deceased estates, qualifying testamentary trust income and complying super funds.",
+    "Primary production income, and charitable or other exempt-entity trusts."
+  ],
+  "workedExample": {
+    "title": "Explanatory Memorandum example 1.1",
+    "steps": [
+      "A trust has net income of $200,000 and distributes it all to individual beneficiaries.",
+      "The trustee pays the minimum tax: $200,000 × 30% = $60,000.",
+      "Each beneficiary is taxed on their share as usual and claims an offset of 30% of it."
+    ],
+    "result": "The $60,000 counts towards the beneficiaries' own tax, but the offset can't be refunded, so a beneficiary on a rate below 30% effectively pays 30%.",
+    "sourceUrl": "https://parlinfo.aph.gov.au/parlInfo/search/display/display.w3p;query=Id%3A%22legislation%2Fems%2Fr7555_ems_5ddf5ef5-1ba9-465d-8a20-6eedde8537f6%22"
+  },
+  "actions": [
+    {
+      "text": "Check whether your trust would be a 'minimum tax trust' or falls into one of the exclusions."
+    },
+    {
+      "text": "Note the decision windows: restructure roll-over from 1 July 2027 to 30 June 2030, or a one-off election in 2028-29. A trust can't use both."
+    },
+    {
+      "text": "Get state stamp duty advice before any restructure: the roll-over covers income tax only."
+    },
+    {
+      "text": "Watch the Senate vote, expected in the 23 to 26 November 2026 sitting week, and any amendments.",
+      "deadline": "2026-11-26"
+    }
+  ],
+  "positions": [
+    {
+      "party": "labor",
+      "stance": "introduced",
+      "summary": "Introduced the bills and says it has not changed its position on the exemptions.",
+      "statedOn": "2026-10-14",
+      "sourceUrl": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/speeches/second-reading-speech-treasury-laws-amendment-tax-reform-no-3"
+    },
+    {
+      "party": "coalition",
+      "stance": "pledges-repeal",
+      "summary": "Opposes the trust tax and wants an inquiry, or at least a start no earlier than 1 July 2029. Its leadership has committed to repeal.",
+      "statedOn": "2026-11-13",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Committees/Senate/Economics/TLAB3ITRDT2026/Report/Coalition_Senators_Additional_Comments"
+    },
+    {
+      "party": "greens",
+      "stance": "wants-amendment",
+      "summary": "Will pass the bills once the exemption for income sent to unauthorised charities and tax-exempt entities is removed. Also wants a beneficial ownership register that covers trusts.",
+      "statedOn": "2026-11-13",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Committees/Senate/Economics/TLAB3ITRDT2026/Report/Greens_Senators_Additional_Comments"
+    },
+    {
+      "party": "one-nation",
+      "stance": "opposes",
+      "summary": "Opposed the trust tax after the Budget; its House MPs voted against the bill.",
+      "statedOn": "2026-10-29",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Chamber_documents/HoR/Divisions/details?id=2842"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7554",
+      "title": "Treasury Laws Amendment (Tax Reform No. 3) Bill 2026: bill homepage",
+      "publisher": "Parliament of Australia",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7555",
+      "title": "Income Tax Rates Amendment (Minimum Tax on Discretionary Trusts) Bill 2026",
+      "publisher": "Parliament of Australia",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd024",
+      "title": "Bills Digest No. 24, 2026-27",
+      "publisher": "Parliamentary Library",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.ato.gov.au/about-ato/new-legislation/in-detail/businesses/tax-reform-introducing-a-minimum-tax-on-discretionary-trusts",
+      "title": "Tax reform: introducing a minimum tax on discretionary trusts",
+      "publisher": "Australian Taxation Office",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Committees/Senate/Economics/TLAB3ITRDT2026/Report/Chapter_2_-_Views_on_the_bills",
+      "title": "Senate Economics Legislation Committee report",
+      "publisher": "Parliament of Australia",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Committees/Senate/Economics/TLAB3ITRDT2026/Report/Coalition_Senators_Additional_Comments",
+      "title": "Coalition senators' additional comments",
+      "publisher": "Parliament of Australia",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Committees/Senate/Economics/TLAB3ITRDT2026/Report/Greens_Senators_Additional_Comments",
+      "title": "Greens senators' additional comments",
+      "publisher": "Parliament of Australia",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Chamber_documents/HoR/Divisions/details?id=2842",
+      "title": "House division: third reading, 29 October 2026",
+      "publisher": "Parliament of Australia",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://budget.gov.au/content/04-tax-reform.htm",
+      "title": "Budget 2026-27: tax reform",
+      "publisher": "Australian Government",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/speeches/second-reading-speech-treasury-laws-amendment-tax-reform-no-3",
+      "title": "Second reading speech: Tax Reform No. 3",
+      "publisher": "Treasurer",
+      "tier": 2,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.abc.net.au/news/2026-11-17/greens-offer-government-path-to-pass-trusts-cgt/107394802",
+      "title": "Greens offer government path to pass trusts tax",
+      "publisher": "ABC News",
+      "tier": 3,
+      "accessed": "2026-11-20"
+    }
+  ],
+  "caveats": [
+    "Some trade press reported a 1 July 2027 start. Parliament's documents and the ATO say 1 July 2028; 1 July 2027 is when the restructure window opens.",
+    "Collection, PAYG instalment and reporting rules are still to come in later laws.",
+    "The bill may be amended in the Senate, for example on distributions to charities."
+  ],
+  "lastVerified": "2026-11-20"
+}

@@ -1,0 +1,45 @@
+[
+  {
+    "id": "labor",
+    "name": "Australian Labor Party",
+    "shortName": "Labor",
+    "role": "government",
+    "leader": "Anthony Albanese",
+    "treasurySpokesperson": "Jim Chalmers (Treasurer)",
+    "website": "https://www.alp.org.au"
+  },
+  {
+    "id": "coalition",
+    "name": "Liberal–National Coalition",
+    "shortName": "Coalition",
+    "role": "opposition",
+    "leader": "Angus Taylor (Liberal) and Matt Canavan (Nationals)",
+    "treasurySpokesperson": "Tim Wilson (Shadow Treasurer)",
+    "website": "https://www.liberal.org.au/our-plan/tax"
+  },
+  {
+    "id": "greens",
+    "name": "Australian Greens",
+    "shortName": "Greens",
+    "role": "crossbench",
+    "leader": "David Shoebridge",
+    "treasurySpokesperson": "Nick McKim",
+    "website": "https://greens.org.au"
+  },
+  {
+    "id": "one-nation",
+    "name": "Pauline Hanson’s One Nation",
+    "shortName": "One Nation",
+    "role": "crossbench",
+    "leader": "Pauline Hanson",
+    "treasurySpokesperson": "Barnaby Joyce",
+    "website": "https://www.onenation.org.au"
+  },
+  {
+    "id": "teals",
+    "name": "Teal independents",
+    "shortName": "Teals",
+    "role": "crossbench",
+    "leader": "No leader: a group of independent MPs"
+  }
+]

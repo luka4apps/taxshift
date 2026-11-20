@@ -1,0 +1,31 @@
+---
+import { PERSONAS } from '../lib/personas.ts';
+import type { Persona } from '../lib/schema.ts';
+import { href } from '../lib/site.ts';
+
+interface Props {
+  current?: Persona;
+}
+const { current } = Astro.props;
+---
+
+<nav class="personas" aria-label="Filter by who you are">
+  <p class="kicker">Show me changes for</p>
+  <ul>
+    <li><a class="btn" href={href()} aria-current={!current ? 'page' : undefined}>Everyone</a></li>
+    {
+      PERSONAS.map((p) => (
+        <li>
+          <a class="btn" href={href(`for/${p.slug}/`)} aria-current={current === p.id ? 'page' : undefined}>
+            {p.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .personas { display: grid; gap: var(--s3); padding-block: var(--s5); }
+  ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s2); }
+</style>

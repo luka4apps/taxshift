@@ -1,0 +1,50 @@
+---
+import Countdown from './Countdown.astro';
+import { formatDate } from '../lib/dates.ts';
+import { href } from '../lib/site.ts';
+import type { TimelineItem } from '../lib/timeline.ts';
+
+interface Props {
+  items: TimelineItem[];
+  /** Compact strip for the dashboard; full list for the timeline page. */
+  variant?: 'strip' | 'full';
+}
+const { items, variant = 'strip' } = Astro.props;
+const KIND: Record<TimelineItem['kind'], string> = { stage: 'Parliament', effective: 'Starts', deadline: 'Deadline', election: 'Election' };
+---
+
+<ol class={`dates ${variant}`}>
+  {
+    items.map((i) => (
+      <li class={`kind-${i.kind} ${i.isPast ? 'past' : ''}`}>
+        <span class="kicker k">{KIND[i.kind]}</span>
+        <time class="display d" datetime={i.date}>{formatDate(i.date)}</time>
+        <span class="lbl">
+          {i.measureId ? <a href={href(`changes/${i.measureId}/`)}>{i.label}</a> : i.label}
+        </span>
+        {i.detail && <span class="detail muted">{i.detail}</span>}
+        {!i.isPast && <span class="mono cd"><Countdown date={i.date} /></span>}
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .dates { list-style: none; padding: 0; display: grid; }
+  li { display: grid; gap: var(--s1); padding: var(--s3) 0; border-top: var(--rule-thin) solid var(--ink); }
+  .d { font-size: 34px; }
+  .lbl { font-weight: 600; }
+  .cd { font-size: 13px; color: var(--muted); }
+  .kind-effective .d { color: var(--shift); }
+  .kind-election { background: var(--wash); padding-inline: var(--s3); }
+  .past { opacity: 0.62; }
+  .strip { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); column-gap: var(--s4); }
+  .full li { grid-template-columns: 110px 190px 1fr; align-items: baseline; column-gap: var(--s4); }
+  .full .k { grid-row: 1; }
+  .full .lbl, .full .detail, .full .cd { grid-column: 3; }
+  .full .d { grid-column: 2; grid-row: 1; font-size: 28px; }
+  @media (max-width: 720px) {
+    .full li { grid-template-columns: 1fr; }
+    .full .lbl, .full .detail, .full .cd, .full .d { grid-column: 1; grid-row: auto; }
+  }
+</style>

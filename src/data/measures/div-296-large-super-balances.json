@@ -1,0 +1,192 @@
+{
+  "id": "div-296-large-super-balances",
+  "title": "Extra tax on earnings for super balances above $3 million (Division 296)",
+  "shortTitle": "Div 296: extra tax on $3m+ super",
+  "headline": "An extra 15% tax on earnings linked to the part of a super balance above $3m, plus 10% more above $10m. First income year: 2026-27.",
+  "summary": "Division 296 adds an individual-level tax on the share of super fund earnings that matches the part of a person's total super balance above $3 million, with a further 10% above $10 million. It taxes realised earnings only; the earlier plan to tax unrealised gains was dropped.",
+  "category": "super",
+  "jurisdiction": "federal",
+  "personas": [
+    "smsf"
+  ],
+  "priority": 4,
+  "announcedOn": "2025-10-13",
+  "effectiveDate": "2026-07-01",
+  "effectiveLabel": "Income years from 1 July 2026",
+  "history": [
+    {
+      "date": "2025-10-13",
+      "stage": "announced",
+      "note": "Redesign announced: $10m tier, indexation, realised earnings only",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2526/26bd048"
+    },
+    {
+      "date": "2026-02-11",
+      "stage": "bill-introduced",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7437"
+    },
+    {
+      "date": "2026-03-05",
+      "stage": "passed-house",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7437"
+    },
+    {
+      "date": "2026-03-10",
+      "stage": "passed-parliament",
+      "note": "Senate passed without amendment",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7437"
+    },
+    {
+      "date": "2026-03-13",
+      "stage": "royal-assent",
+      "note": "Acts No. 8 and No. 9 of 2026",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7437"
+    }
+  ],
+  "bigStat": {
+    "value": "$3m",
+    "caption": "total super balance where the extra 15% starts"
+  },
+  "shift": {
+    "from": "15% on all fund earnings",
+    "to": "Up to 30% and 40% above $3m and $10m"
+  },
+  "before": [
+    "Fund earnings were taxed at 15% in accumulation and 0% in retirement phase, whatever the size of the balance."
+  ],
+  "after": [
+    "An extra 15% on the share of earnings matching the part of your total super balance above $3 million.",
+    "A further 10% on the share above $10 million: 40% combined nominal rate on that share.",
+    "Realised earnings only; unrealised gains are not taxed. Both thresholds are indexed to CPI from 2027-28.",
+    "SMSFs can make a one-off, irrevocable election to reset asset cost bases to market value at 30 June 2026 for Division 296 purposes."
+  ],
+  "exemptions": [
+    "People who die during 2026-27.",
+    "Child recipients of income streams and structured settlement recipients.",
+    "Certain judicial and office-holder pensions. Defined benefit interests are deferred, not exempt."
+  ],
+  "workedExample": {
+    "title": "ATO example: Jordan",
+    "steps": [
+      "Jordan's total super balance at 30 June 2027 is $4,000,000 and super earnings are $100,000.",
+      "Share above the $3m threshold: ($4m − $3m) ÷ $4m = 25%, so $25,000 of earnings is taxable under Division 296."
+    ],
+    "result": "Division 296 tax: $25,000 × 15% = $3,750.",
+    "sourceUrl": "https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/caps-limits-and-tax-on-super-contributions/division-296-tax/how-division-296-tax-is-calculated"
+  },
+  "actions": [
+    {
+      "text": "Work out each member's total super balance across all funds at 30 June 2027 (LRBA amounts are excluded).",
+      "deadline": "2027-06-30"
+    },
+    {
+      "text": "Decide whether to make the irrevocable CGT cost-base reset election for assets held at 30 June 2026; it needs market valuations and is due with the 2026-27 return."
+    },
+    {
+      "text": "If a member is in scope, plan for an actuary and for reporting relevant earnings in the 2026-27 SMSF annual return."
+    },
+    {
+      "text": "Plan cash flow: tax is due 84 days after an assessment, or you can elect to release money from super within 60 days."
+    }
+  ],
+  "positions": [
+    {
+      "party": "labor",
+      "stance": "introduced",
+      "summary": "Legislated the redesigned tax, noting the Liberals and Nationals opposed it.",
+      "statedOn": "2026-03-10",
+      "sourceUrl": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/governments-super-reforms-pass-parliament"
+    },
+    {
+      "party": "coalition",
+      "stance": "opposes",
+      "summary": "Voted against the bill. Earlier repeal pledges applied to the lapsed unrealised-gains version; no 2026 pledge to repeal the final law was found.",
+      "statedOn": "2026-03-10",
+      "sourceUrl": "https://www.accountantsdaily.com.au/tax-compliance/22223-greens-back-super-tax-changes-as-downpayment-for-real-tax-reform"
+    },
+    {
+      "party": "greens",
+      "stance": "supports",
+      "summary": "Passed it unamended as a \"downpayment\" on wider tax reform.",
+      "statedOn": "2026-03-10",
+      "sourceUrl": "https://greens.org.au/news/media-release/greens-back-super-changes-downpayment-real-tax-reform"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.legislation.gov.au/C2026A00008/asmade/text",
+      "title": "Treasury Laws Amendment (Building a Stronger and Fairer Super System) Act 2026",
+      "publisher": "Federal Register of Legislation",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.legislation.gov.au/C2026A00009/asmade/text",
+      "title": "Superannuation (Building a Stronger and Fairer Super System) Imposition Act 2026",
+      "publisher": "Federal Register of Legislation",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7437",
+      "title": "Building a Stronger and Fairer Super System Bill 2026: bill homepage",
+      "publisher": "Parliament of Australia",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2526/26bd048",
+      "title": "Bills Digest No. 48, 2025-26",
+      "publisher": "Parliamentary Library",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/caps-limits-and-tax-on-super-contributions/division-296-tax/division-296-tax-on-large-super-balances",
+      "title": "Division 296 tax on large super balances",
+      "publisher": "Australian Taxation Office",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/caps-limits-and-tax-on-super-contributions/division-296-tax/how-division-296-tax-is-calculated",
+      "title": "How Division 296 tax is calculated",
+      "publisher": "Australian Taxation Office",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/self-managed-super-funds-smsf/smsf-administration-and-reporting/about-division-296-tax-for-smsfs",
+      "title": "About Division 296 tax for SMSFs",
+      "publisher": "Australian Taxation Office",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/governments-super-reforms-pass-parliament",
+      "title": "Government's super reforms pass Parliament",
+      "publisher": "Treasurer",
+      "tier": 2,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.accountantsdaily.com.au/tax-compliance/22223-greens-back-super-tax-changes-as-downpayment-for-real-tax-reform",
+      "title": "Greens back super tax changes as downpayment",
+      "publisher": "Accountants Daily",
+      "tier": 3,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://greens.org.au/news/media-release/greens-back-super-changes-downpayment-real-tax-reform",
+      "title": "Greens back super changes as downpayment for real tax reform",
+      "publisher": "Australian Greens",
+      "tier": 2,
+      "accessed": "2026-11-20"
+    }
+  ],
+  "caveats": [
+    "Thresholds for 2027-28 depend on CPI and are not published yet.",
+    "ATO guidance on total super balance and relevant earnings is still in draft (TR 2026/D3 and LCR 2026/D6; comments close 18 December 2026)."
+  ],
+  "lastVerified": "2026-11-20"
+}

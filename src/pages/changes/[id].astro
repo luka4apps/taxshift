@@ -1,0 +1,231 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import Countdown from '../../components/Countdown.astro';
+import RiskLine from '../../components/RiskLine.astro';
+import Stamp from '../../components/Stamp.astro';
+import { formatDate } from '../../lib/dates.ts';
+import { loadSiteData } from '../../lib/load.ts';
+import { personaById } from '../../lib/personas.ts';
+import { flipRisk, STANCE_LABEL } from '../../lib/risk.ts';
+import type { Measure } from '../../lib/schema.ts';
+import { buildToday, getData, href } from '../../lib/site.ts';
+import { deriveStatus, startLine } from '../../lib/status.ts';
+import { statusTrack } from '../../lib/track.ts';
+
+export const getStaticPaths = (() => loadSiteData().measures.map((m) => ({ params: { id: m.id }, props: { id: m.id } }))) satisfies GetStaticPaths;
+
+const { measures, parties, election, changelog } = getData();
+const m = measures.find((x) => x.id === Astro.props.id) as Measure;
+const status = deriveStatus(m, buildToday);
+const start = startLine(m, buildToday);
+const risk = flipRisk(m, parties, election);
+const track = statusTrack(m, buildToday);
+const history = changelog.filter((c) => c.measureId === m.id).sort((a, b) => b.date.localeCompare(a.date));
+const TIER = { 1: 'Official', 2: 'Parties and ministers', 3: 'Media and professional bodies' } as const;
+const byTier = ([1, 2, 3] as const).map((t) => ({ t, items: m.sources.filter((s) => s.tier === t) })).filter((g) => g.items.length);
+---
+
+<Base title={m.title} description={m.headline}>
+  <article class="wrap detail">
+    <p class="crumbs kicker"><a href={href()}>Changes</a> / {m.shortTitle}</p>
+
+    <header class="head">
+      <div class="head-top">
+        <span class="kicker">{m.personas.map((p) => personaById(p).label).join(' · ')}</span>
+        <Stamp status={status} size="lg" />
+      </div>
+      <h1 class="display">{m.title}</h1>
+      <p class="lead">{m.headline}</p>
+      <div class="stat-row">
+        <p class="big display">{m.bigStat.value}<span class="kicker">{m.bigStat.caption}</span></p>
+        <div class="when mono">
+          <p class="kicker">{status.label}</p>
+          {start && (
+            <p>
+              {start.prefix} <strong class="display d">{formatDate(start.date)}</strong>
+              {start.countdown && <span class="cd"><Countdown date={start.date} /></span>}
+            </p>
+          )}
+          {m.effectiveLabel && <p class="muted">{m.effectiveLabel}</p>}
+        </div>
+      </div>
+    </header>
+
+    <section aria-labelledby="track-h" class="block">
+      <h2 class="kicker" id="track-h">Where it's up to</h2>
+      <ol class="track">
+        {track.map((s) => (
+          <li class={s.state} aria-current={s.state === 'current' ? 'step' : undefined}>
+            <span class="dot" aria-hidden="true"></span>
+            <span class="t">{s.label}</span>
+            <span class="mono dd">{s.date ? formatDate(s.date) : s.state === 'done' ? 'Done' : '—'}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section aria-labelledby="ba-h" class="block">
+      <h2 class="display h2" id="ba-h">Before and after</h2>
+      <p class="summary prose">{m.summary}</p>
+      <div class="ba">
+        <div class="before">
+          <h3 class="kicker">Before: <s>{m.shift.from}</s></h3>
+          <ul>{m.before.map((t) => <li>{t}</li>)}</ul>
+        </div>
+        <div class="after">
+          <h3 class="kicker">After: {m.shift.to}</h3>
+          <ul>{m.after.map((t) => <li>{t}</li>)}</ul>
+        </div>
+      </div>
+    </section>
+
+    {m.exemptions.length > 0 && (
+      <section aria-labelledby="ex-h" class="block">
+        <h2 class="display h2" id="ex-h">Who's exempt or protected</h2>
+        <ul class="prose ticks">{m.exemptions.map((t) => <li>{t}</li>)}</ul>
+      </section>
+    )}
+
+    {m.workedExample && (
+      <section aria-labelledby="eg-h" class="block example">
+        <h2 class="display h2" id="eg-h">Worked example</h2>
+        <h3 class="kicker">{m.workedExample.title}</h3>
+        <ol>{m.workedExample.steps.map((s) => <li>{s}</li>)}</ol>
+        <p class="result">{m.workedExample.result}</p>
+        {m.workedExample.sourceUrl && <p class="kicker"><a href={m.workedExample.sourceUrl} rel="noopener">Source of this example</a></p>}
+      </section>
+    )}
+
+    <section aria-labelledby="flip-h" class="block">
+      <h2 class="display h2" id="flip-h">Could it flip?</h2>
+      <RiskLine risk={risk} />
+      {risk.lines.length > 0 ? (
+        <ul class="positions">
+          {risk.lines.map((l) => (
+            <li class={`st-${l.position.stance}`}>
+              <p class="who">
+                <strong>{l.party.shortName}</strong>
+                <span class="kicker">{l.party.role}</span>
+                <span class="badge">{STANCE_LABEL[l.position.stance]}</span>
+              </p>
+              <p>{l.position.summary}</p>
+              <p class="kicker meta">
+                {l.position.statedOn && <>Stated {formatDate(l.position.statedOn)} · </>}
+                {l.position.sourceUrl && <a href={l.position.sourceUrl} rel="noopener">Source</a>}
+              </p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="muted">We haven't found a stated position from any party on this change.</p>
+      )}
+    </section>
+
+    {m.actions.length > 0 && (
+      <section aria-labelledby="do-h" class="block">
+        <h2 class="display h2" id="do-h">{status.isLaw ? 'What to do now' : 'How to prepare'}</h2>
+        <p class="muted">{status.isLaw ? 'This is law. General steps people commonly take:' : 'This is not law yet. Plan, but don’t act as if it has passed.'}</p>
+        <ol class="actions">
+          {m.actions.map((a) => (
+            <li>
+              {a.text}
+              {a.deadline && <span class="due mono">By {formatDate(a.deadline)}</span>}
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
+
+    {m.caveats.length > 0 && (
+      <section aria-labelledby="cv-h" class="block caveats">
+        <h2 class="display h2" id="cv-h">Known unknowns</h2>
+        <ul class="prose">{m.caveats.map((c) => <li>{c}</li>)}</ul>
+      </section>
+    )}
+
+    <section aria-labelledby="src-h" class="block">
+      <h2 class="display h2" id="src-h">Sources</h2>
+      {byTier.map((g) => (
+        <div class="tier">
+          <h3 class="kicker">{TIER[g.t]}</h3>
+          <ul>
+            {g.items.map((s) => (
+              <li>
+                <a href={s.url} rel="noopener">{s.title}</a> <span class="muted">· {s.publisher} · checked {formatDate(s.accessed)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      <p class="kicker verified">Facts on this page last verified {formatDate(m.lastVerified, 'long')}</p>
+    </section>
+
+    {history.length > 0 && (
+      <section aria-labelledby="hist-h" class="block">
+        <h2 class="kicker" id="hist-h">Updates to this page</h2>
+        <ul>{history.map((c) => <li><span class="mono">{formatDate(c.date)}</span> {c.summary}</li>)}</ul>
+      </section>
+    )}
+  </article>
+</Base>
+
+<style>
+  .detail { padding-top: var(--s5); }
+  .crumbs { margin-bottom: var(--s4); }
+  .head { display: grid; gap: var(--s4); border-bottom: var(--rule-heavy) solid var(--ink); padding-bottom: var(--s5); }
+  .head-top { display: flex; justify-content: space-between; align-items: center; gap: var(--s4); flex-wrap: wrap; }
+  h1 { font-size: clamp(48px, 8vw, 104px); max-width: 16ch; }
+  .lead { font-size: clamp(19px, 2.2vw, 24px); font-weight: 600; max-width: 52ch; line-height: 1.4; }
+  .stat-row { display: grid; gap: var(--s5); align-items: end; }
+  .big { font-size: clamp(96px, 16vw, 200px); line-height: 0.8; color: var(--shift); display: grid; gap: var(--s2); }
+  .big .kicker { color: var(--ink); font-size: 13px; max-width: 36ch; }
+  .when { display: grid; gap: var(--s1); }
+  .when .d { font-size: 44px; display: block; }
+  .cd { display: block; color: var(--muted); }
+  @media (min-width: 860px) { .stat-row { grid-template-columns: 1fr 1fr; } }
+
+  .block { padding-block: var(--s6); border-bottom: var(--rule-thin) solid var(--ink); }
+  .h2 { font-size: clamp(36px, 5vw, 56px); margin-bottom: var(--s4); }
+  .track { list-style: none; padding: 0; display: grid; gap: 0; margin-top: var(--s3); }
+  .track li { display: grid; grid-template-columns: 22px 1fr auto; gap: var(--s3); align-items: center; padding: var(--s2) 0; border-bottom: 1px solid var(--rule); }
+  .dot { width: 18px; height: 18px; border: 3px solid var(--ink); border-radius: 50%; }
+  .done .dot { background: var(--ink); }
+  .current .dot { background: var(--shift); border-color: var(--shift); box-shadow: 0 0 0 4px color-mix(in srgb, var(--shift) 25%, transparent); }
+  .current .t { font-weight: 800; }
+  .todo { color: var(--muted); }
+  .todo .dot { border-style: dashed; border-color: var(--muted); }
+  .dd { font-size: 13px; }
+  @media (min-width: 900px) {
+    .track { grid-template-columns: repeat(6, 1fr); }
+    .track li { grid-template-columns: 1fr; border-bottom: 0; border-top: var(--rule-mid) solid var(--rule); padding-top: var(--s3); }
+    .track li.done, .track li.current { border-top-color: var(--ink); }
+    .track li.current { border-top-color: var(--shift); }
+  }
+
+  .summary { margin-bottom: var(--s5); font-size: 18px; }
+  .ba { display: grid; gap: var(--s5); }
+  .ba ul, .ticks, .caveats ul, .tier ul, .block > ul { padding-left: 1.2em; display: grid; gap: var(--s2); }
+  .before { color: var(--muted); }
+  .after { border-left: var(--rule-mid) solid var(--shift); padding-left: var(--s4); }
+  .before h3, .after h3 { margin-bottom: var(--s3); }
+  @media (min-width: 860px) { .ba { grid-template-columns: 1fr 1fr; } }
+
+  .example { background: var(--wash); padding-inline: var(--s5); margin-block: var(--s5); border: var(--rule-thin) solid var(--ink); }
+  .example ol { padding-left: 1.4em; display: grid; gap: var(--s2); margin-block: var(--s3); }
+  .result { font-weight: 800; font-size: 19px; margin-bottom: var(--s3); }
+
+  .positions { list-style: none; padding: 0; display: grid; gap: var(--s4); margin-top: var(--s5); }
+  .positions li { border-top: var(--rule-mid) solid var(--ink); padding-top: var(--s3); display: grid; gap: var(--s2); max-width: 72ch; }
+  .who { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; }
+  .who strong { font: 900 26px/1 var(--font-display); text-transform: uppercase; }
+  .badge { font: 500 12px var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; border: var(--rule-thin) solid var(--ink); padding: 3px 8px; }
+  .st-pledges-repeal .badge { background: var(--shift); border-color: var(--shift); color: var(--on-shift); }
+  .meta { color: var(--muted); }
+
+  .actions { padding-left: 1.4em; display: grid; gap: var(--s3); margin-top: var(--s4); max-width: 72ch; font-weight: 600; }
+  .due { display: inline-block; margin-left: var(--s2); background: var(--shift); color: var(--on-shift); padding: 0 6px; font-size: 13px; font-weight: 500; }
+  .tier { margin-bottom: var(--s4); }
+  .tier h3 { margin-bottom: var(--s2); }
+  .verified { margin-top: var(--s4); }
+</style>

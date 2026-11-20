@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700;900&family=Overpass+Mono:wght@500;700&family=Atkinson+Hyperlegible:wght@400;700&family=Big+Shoulders+Display:wght@700;900&family=Public+Sans:wght@400;600;800&family=DM+Mono:wght@500&family=Schibsted+Grotesk:wght@400;700;900&family=Martian+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#e9e9e6;font-family:system-ui,sans-serif;color:#111;padding:24px 16px 80px}
+  .intro{max-width:1180px;margin:0 auto 24px;font-size:15px;color:#444}
+  .intro b{color:#111}
+  .board{max-width:1180px;margin:0 auto 40px;border-radius:4px;overflow:hidden;box-shadow:0 1px 0 #0002}
+  .tag{display:inline-block;font:700 12px/1 system-ui;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;margin:0 auto 10px;max-width:1180px}
+  .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0}
+  .meta>div{padding:20px 24px}
+  .meta h4{font:700 11px/1 system-ui;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-bottom:10px}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{width:52px;height:52px;border-radius:2px;display:flex;align-items:flex-end;padding:4px;font:500 9px/1 monospace}
+  .pills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;padding:24px}
+
+  /* ---------- A: CHANGE AHEAD ---------- */
+  .A{background:#fff;color:#111;font-family:'Atkinson Hyperlegible',sans-serif}
+  .A .hero{background:#FFCE00;padding:36px 28px 30px;display:flex;gap:28px;align-items:center;flex-wrap:wrap;border-bottom:8px solid #111}
+  .A .diamond{width:110px;height:110px;background:#111;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;flex:none;border-radius:8px;margin:12px}
+  .A .diamond span{transform:rotate(-45deg);color:#FFCE00;font:900 30px/0.9 'Overpass';text-align:center}
+  .A .word{font:900 clamp(44px,8vw,92px)/.86 'Overpass';letter-spacing:-.02em;text-transform:uppercase}
+  .A .sub{font:700 20px/1.3 'Atkinson Hyperlegible';margin-top:10px;max-width:560px}
+  .A .meta{background:#23252A;color:#fff}
+  .A .pill{border:4px solid #111;border-radius:14px;padding:18px 20px;background:#fff;position:relative}
+  .A .pill.law{background:#FFCE00}
+  .A .pill.prop{border-style:dashed;background:#fff}
+  .A .pill .st{display:inline-flex;gap:8px;align-items:center;font:700 13px/1 'Overpass Mono';text-transform:uppercase;letter-spacing:.06em;background:#111;color:#FFCE00;padding:7px 10px;border-radius:6px}
+  .A .pill.prop .st{background:#fff;color:#111;border:2px dashed #111}
+  .A .pill h3{font:900 28px/1 'Overpass';text-transform:uppercase;margin:14px 0 6px}
+  .A .pill .date{font:700 44px/1 'Overpass Mono';letter-spacing:-.03em}
+  .A .pill .cd{font:700 14px/1.2 'Overpass Mono';opacity:.8}
+  .A .pill p{font-size:17px;line-height:1.45;margin-top:10px}
+  .A .risk{margin-top:12px;border-top:3px solid #111;padding-top:10px;font:700 14px/1.3 'Atkinson Hyperlegible'}
+
+  /* ---------- B: TAXSHIFT ---------- */
+  .B{background:#fff;color:#0A0A0A;font-family:'Public Sans',sans-serif}
+  .B .hero{padding:30px 28px 26px;border-bottom:10px solid #0A0A0A;position:relative}
+  .B .bar{display:flex;justify-content:space-between;font:500 12px/1 'DM Mono';text-transform:uppercase;letter-spacing:.08em;border-bottom:2px solid #0A0A0A;padding-bottom:10px;margin-bottom:14px}
+  .B .word{font:900 clamp(64px,13vw,150px)/.8 'Big Shoulders Display';text-transform:uppercase;letter-spacing:-.01em}
+  .B .word i{font-style:normal;color:#E5007D}
+  .B .sub{font:800 22px/1.25 'Public Sans';margin-top:14px;max-width:700px}
+  .B .meta{background:#0A0A0A;color:#fff}
+  .B .pill{border-top:10px solid #0A0A0A;padding:16px 4px 6px;position:relative}
+  .B .stamp{position:absolute;right:6px;top:22px;transform:rotate(-6deg);font:900 22px/1 'Big Shoulders Display';letter-spacing:.06em;padding:4px 10px;border:4px solid #E5007D;color:#E5007D;text-transform:uppercase}
+  .B .stamp.p{border-color:#0A0A0A;color:#0A0A0A;border-style:dashed}
+  .B .pill h3{font:900 34px/.95 'Big Shoulders Display';text-transform:uppercase;max-width:75%}
+  .B .big{font:900 76px/.9 'Big Shoulders Display';margin:10px 0 2px}
+  .B .big small{font:500 14px/1 'DM Mono';display:block;letter-spacing:.06em;text-transform:uppercase;margin-top:6px}
+  .B .ba{display:flex;gap:12px;align-items:baseline;font:600 16px/1.3 'Public Sans';margin-top:10px}
+  .B .ba s{opacity:.55}
+  .B .ba b{background:#E5007D;color:#fff;padding:2px 6px}
+  .B .risk{margin-top:12px;font:500 13px/1.4 'DM Mono';text-transform:uppercase;border-top:2px solid #0A0A0A;padding-top:8px}
+
+  /* ---------- C: TAXBOARD ---------- */
+  .C{background:#0D0E10;color:#F2F2EF;font-family:'Schibsted Grotesk',sans-serif}
+  .C .hero{padding:30px 28px 24px}
+  .C .word{font:900 clamp(48px,9vw,104px)/.9 'Schibsted Grotesk';letter-spacing:-.04em}
+  .C .word span{color:#FFB81C}
+  .C .sub{font:400 20px/1.35 'Schibsted Grotesk';opacity:.85;margin-top:10px}
+  .C .boardtbl{margin:22px 0 0;border-top:2px solid #2a2d33}
+  .C .row{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:10px;padding:12px 0;border-bottom:2px solid #2a2d33;font:700 15px/1.2 'Martian Mono';text-transform:uppercase;align-items:center}
+  .C .row.h{font:400 11px/1 'Martian Mono';opacity:.6;letter-spacing:.1em}
+  .C .flap{background:#1B1D21;color:#FFB81C;padding:6px 8px;border-radius:3px;display:inline-block;letter-spacing:.04em}
+  .C .s{padding:6px 10px;border-radius:3px;display:inline-block;font-size:13px}
+  .C .s.law{background:#39D5FF;color:#0D0E10}
+  .C .s.prop{border:2px solid #F2F2EF}
+  .C .s.risk{background:#FF5C4D;color:#0D0E10}
+  .C .meta{background:#1B1D21}
+  .C .pills{background:#F2F2EF;color:#0D0E10}
+  .C .pill{background:#fff;border-radius:10px;padding:18px 20px;border:2px solid #0D0E10}
+  .C .pill .k{font:400 12px/1 'Martian Mono';text-transform:uppercase;letter-spacing:.08em;opacity:.7}
+  .C .pill h3{font:900 28px/1 'Schibsted Grotesk';letter-spacing:-.02em;margin:8px 0}
+  .C .pill .flap{font:700 26px/1 'Martian Mono'}
+  .C .pill p{font-size:16px;line-height:1.45;margin-top:10px}
+</style>
+</head>
+<body>
+
+<p class="intro"><b>Three brand directions.</b> Same content in each: the CGT change, the SMSF borrowing ban and a proposal. Pick the one that feels most like a site you'd trust and share. Colours deliberately avoid party colours (Labor red, Liberal blue, Greens green, One Nation orange).</p>
+
+<!-- ================= A ================= -->
+<div class="tag" style="background:#FFCE00">Option A · Road sign</div>
+<section class="board A">
+  <div class="hero">
+    <div class="diamond"><span>TAX<br>LAW</span></div>
+    <div>
+      <div class="word">Change<br>Ahead</div>
+      <div class="sub">Australian tax law changes for investors. Know what's law, what's coming and what could flip back.</div>
+    </div>
+  </div>
+  <div class="pills">
+    <div class="pill law">
+      <span class="st">◆ Law · starts soon</span>
+      <h3>CGT discount ends</h3>
+      <div class="date">01 JUL 2027</div>
+      <div class="cd">223 days to go</div>
+      <p>Gains after this date: indexation + 30% minimum tax, not the 50% discount.</p>
+      <div class="risk">Coalition: will repeal if elected (election due by 2028)</div>
+    </div>
+    <div class="pill">
+      <span class="st">■ In effect</span>
+      <h3>SMSF property loans banned</h3>
+      <div class="date">10 AUG 2026</div>
+      <div class="cd">102 days ago</div>
+      <p>No new LRBAs for residential property. Existing loans protected.</p>
+    </div>
+    <div class="pill prop">
+      <span class="st">◇ Proposed · in Senate</span>
+      <h3>Trust minimum tax</h3>
+      <div class="date">01 JUL 2028</div>
+      <p>30% minimum tax on discretionary trust income. Not law yet.</p>
+    </div>
+  </div>
+  <div class="meta">
+    <div><h4>Palette</h4><div class="chips">
+      <div class="chip" style="background:#FFCE00;color:#111">FFCE00</div>
+      <div class="chip" style="background:#111;color:#FFCE00">111111</div>
+      <div class="chip" style="background:#fff;color:#111">FFFFFF</div>
+      <div class="chip" style="background:#23252A;color:#fff;outline:1px solid #555">23252A</div>
+    </div></div>
+    <div><h4>Type</h4><div style="font:900 22px 'Overpass'">Overpass Black</div><div style="font:400 15px 'Atkinson Hyperlegible'">Atkinson Hyperlegible body</div><div style="font:700 14px 'Overpass Mono'">Overpass Mono 01.07.27</div></div>
+    <div><h4>Idea</h4><div style="font-size:14px;line-height:1.45">Australian road-sign language. Status is a sign shape, not just a colour: ◆ law coming, ■ in effect, ◇ dashed = proposal. Overpass descends from road-sign lettering.</div></div>
+    <div><h4>Domain hint</h4><div style="font:700 15px 'Overpass Mono'">changeahead.au<br>changeahead.com.au</div><div style="font-size:12px;opacity:.7;margin-top:4px">No DNS records found (likely free)</div></div>
+  </div>
+</section>
+
+<!-- ================= B ================= -->
+<div class="tag" style="background:#E5007D;color:#fff">Option B · Loud broadsheet</div>
+<section class="board B">
+  <div class="hero">
+    <div class="bar"><span>Investor tax tracker</span><span>Checked daily · 20 Nov 2026</span></div>
+    <div class="word">Tax<i>shift</i></div>
+    <div class="sub">What changed. When it bites. Who wants to change it back.</div>
+  </div>
+  <div class="pills">
+    <div class="pill">
+      <span class="stamp">Law</span>
+      <h3>CGT 50% discount replaced</h3>
+      <div class="big">1.7.27<small>223 days · in effect from</small></div>
+      <div class="ba"><s>50% discount</s><span>→</span><b>Indexation + 30% min</b></div>
+      <div class="risk">Repeal risk: Coalition pledge · election by 2028</div>
+    </div>
+    <div class="pill">
+      <span class="stamp">In force</span>
+      <h3>SMSF residential borrowing</h3>
+      <div class="big">BANNED<small>since 10 Aug 2026</small></div>
+      <div class="ba"><s>LRBA allowed</s><span>→</span><b>No new LRBAs</b></div>
+    </div>
+    <div class="pill">
+      <span class="stamp p">Proposed</span>
+      <h3>Trust minimum tax</h3>
+      <div class="big">30%<small>from 1 Jul 2028 · in Senate</small></div>
+      <div class="ba"><s>Flow-through</s><span>→</span><b>30% floor</b></div>
+    </div>
+  </div>
+  <div class="meta">
+    <div><h4>Palette</h4><div class="chips">
+      <div class="chip" style="background:#0A0A0A;color:#fff;outline:1px solid #555">0A0A0A</div>
+      <div class="chip" style="background:#fff;color:#0A0A0A">FFFFFF</div>
+      <div class="chip" style="background:#E5007D;color:#fff">E5007D</div>
+      <div class="chip" style="background:#D9D9D9;color:#0A0A0A">D9D9D9</div>
+    </div></div>
+    <div><h4>Type</h4><div style="font:900 26px 'Big Shoulders Display';text-transform:uppercase">Big Shoulders Black</div><div style="font:400 15px 'Public Sans'">Public Sans body</div><div style="font:500 14px 'DM Mono'">DM MONO 01.07.27</div></div>
+    <div><h4>Idea</h4><div style="font-size:14px;line-height:1.45">Front-page energy. Huge condensed numbers, heavy black rules, rubber-stamp status labels and strike-through before/after. Public Sans was built for government information.</div></div>
+    <div><h4>Domain hint</h4><div style="font:500 15px 'DM Mono'">taxshift.au<br>taxshift.com.au</div><div style="font-size:12px;opacity:.7;margin-top:4px">No DNS records found (likely free)</div></div>
+  </div>
+</section>
+
+<!-- ================= C ================= -->
+<div class="tag" style="background:#FFB81C">Option C · Departure board</div>
+<section class="board C">
+  <div class="hero">
+    <div class="word">Tax<span>board</span></div>
+    <div class="sub">Every investor tax change, on the board. Updated daily.</div>
+    <div class="boardtbl">
+      <div class="row h"><span>Change</span><span>Departs</span><span>Status</span></div>
+      <div class="row"><span>CGT discount → indexation</span><span class="flap">01 JUL 27</span><span><span class="s law">Law · on time</span></span></div>
+      <div class="row"><span>Neg. gearing → new builds</span><span class="flap">01 JUL 27</span><span><span class="s law">Law · on time</span></span></div>
+      <div class="row"><span>Trust minimum tax 30%</span><span class="flap">01 JUL 28</span><span><span class="s prop">Proposed</span></span></div>
+      <div class="row"><span>Coalition repeal pledge</span><span class="flap">ELECTION</span><span><span class="s risk">Risk</span></span></div>
+    </div>
+  </div>
+  <div class="pills">
+    <div class="pill">
+      <div class="k">Property · shares · trusts</div>
+      <h3>CGT discount replaced</h3>
+      <span class="flap" style="background:#0D0E10">01 JUL 2027</span>
+      <p>Gains after this date: indexation + 30% minimum tax. Gains before it keep the 50% discount.</p>
+    </div>
+    <div class="pill">
+      <div class="k">SMSF</div>
+      <h3>Residential LRBAs banned</h3>
+      <span class="flap" style="background:#0D0E10">10 AUG 2026</span>
+      <p>In effect. Existing loans and refinances protected.</p>
+    </div>
+  </div>
+  <div class="meta">
+    <div><h4>Palette</h4><div class="chips">
+      <div class="chip" style="background:#0D0E10;color:#FFB81C;outline:1px solid #444">0D0E10</div>
+      <div class="chip" style="background:#FFB81C;color:#0D0E10">FFB81C</div>
+      <div class="chip" style="background:#39D5FF;color:#0D0E10">39D5FF</div>
+      <div class="chip" style="background:#FF5C4D;color:#0D0E10">FF5C4D</div>
+      <div class="chip" style="background:#F2F2EF;color:#0D0E10">F2F2EF</div>
+    </div></div>
+    <div><h4>Type</h4><div style="font:900 22px 'Schibsted Grotesk'">Schibsted Grotesk Black</div><div style="font:700 13px 'Martian Mono'">MARTIAN MONO 01 JUL 27</div></div>
+    <div><h4>Idea</h4><div style="font-size:14px;line-height:1.45">Airport departures board: each change is a "flight" with a departure date and status (on time, delayed, cancelled, scheduled). Instantly readable; dark board hero, light content below.</div></div>
+    <div><h4>Domain hint</h4><div style="font:700 14px 'Martian Mono'">taxboard.au<br>taxboard.com.au</div><div style="font-size:12px;opacity:.7;margin-top:4px">No DNS records found (likely free)</div></div>
+  </div>
+</section>
+
+</body>
+</html>

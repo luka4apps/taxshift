@@ -1,0 +1,14 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import Dashboard from '../../components/Dashboard.astro';
+import { PERSONAS, type PersonaInfo } from '../../lib/personas.ts';
+
+export const getStaticPaths = (() => PERSONAS.map((p) => ({ params: { persona: p.slug }, props: { info: p } }))) satisfies GetStaticPaths;
+
+const { info } = Astro.props as { info: PersonaInfo };
+---
+
+<Base title={`Tax changes for ${info.label.toLowerCase()}`} description={`Australian tax law changes affecting ${info.label.toLowerCase()}: what changed, when it starts, and who wants to change it back.`}>
+  <Dashboard persona={info.id} />
+</Base>

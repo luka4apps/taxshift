@@ -1,0 +1,32 @@
+---
+import type { FlipSummary } from '../lib/risk.ts';
+
+interface Props {
+  risk: FlipSummary;
+}
+const { risk } = Astro.props;
+const LABEL: Record<FlipSummary['level'], string> = {
+  'repeal-pledged': 'Repeal risk',
+  contested: 'Contested',
+  'could-tighten': 'Could tighten',
+  settled: 'Settled',
+};
+---
+
+<p class={`risk level-${risk.level}`}>
+  <span class="tag">{LABEL[risk.level]}</span>
+  <span class="txt"><strong>{risk.headline}</strong>{risk.trigger && <span class="trigger">{risk.trigger}</span>}</span>
+</p>
+
+<style>
+  .risk { display: grid; grid-template-columns: auto 1fr; gap: var(--s3); align-items: start; font-size: 15px; line-height: 1.4; }
+  .tag {
+    font: 500 11px/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 6px 8px; border: var(--rule-thin) solid var(--ink); white-space: nowrap;
+  }
+  .txt { display: grid; gap: 2px; }
+  .trigger { color: var(--muted); }
+  .level-repeal-pledged .tag { background: var(--shift); border-color: var(--shift); color: var(--on-shift); }
+  .level-could-tighten .tag { border-style: dashed; }
+  .level-settled .tag { border-color: var(--rule); color: var(--muted); }
+</style>

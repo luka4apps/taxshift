@@ -1,0 +1,61 @@
+{
+  "id": "pre-cgt-assets",
+  "title": "Assets bought before 1985 lose their CGT-free status",
+  "shortTitle": "Pre-1985 assets now taxed",
+  "headline": "Assets bought before 20 September 1985 become taxable on growth after 1 July 2027. Growth up to then stays tax-free.",
+  "summary": "Pre-CGT assets have been exempt from capital gains tax since CGT began in 1985. From 1 July 2027 they are treated as sold and reacquired at market value, so only growth after that date is taxed, under the new indexation rules.",
+  "category": "cgt",
+  "jurisdiction": "federal",
+  "personas": ["property", "shares", "business"],
+  "priority": 6,
+  "announcedOn": "2026-05-12",
+  "effectiveDate": "2027-07-01",
+  "effectiveLabel": "CGT events on or after 1 July 2027",
+  "history": [
+    { "date": "2026-05-12", "stage": "announced", "sourceUrl": "https://budget.gov.au/content/factsheets/download/tax-explainers-negative-gearing-capital-gains-tax.pdf" },
+    { "date": "2026-05-28", "stage": "bill-introduced", "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7493" },
+    { "date": "2026-06-04", "stage": "passed-house", "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7493" },
+    { "date": "2026-06-25", "stage": "passed-parliament", "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7493" },
+    { "date": "2026-06-26", "stage": "royal-assent", "note": "Treasury Laws Amendment (Tax Reform No. 1) Act 2026", "sourceUrl": "https://www.legislation.gov.au/C2026A00049/asmade/text" }
+  ],
+  "bigStat": { "value": "1985", "caption": "assets bought before 20 September 1985 lose their exemption" },
+  "shift": { "from": "CGT-free for good", "to": "Taxed on growth after July 2027" },
+  "before": [
+    "Assets acquired before 20 September 1985 were permanently exempt from capital gains tax."
+  ],
+  "after": [
+    "Pre-1985 assets held on 30 June 2027 are treated as sold and reacquired at market value just before 1 July 2027.",
+    "Growth up to that date stays tax-free. Growth after it is taxed under the indexation rules, with the 30% minimum for individuals.",
+    "It applies to every kind of owner, including companies."
+  ],
+  "exemptions": [
+    "Your main residence remains exempt.",
+    "All growth up to 1 July 2027."
+  ],
+  "workedExample": {
+    "title": "Explanatory Memorandum example: Eileen",
+    "steps": [
+      "Eileen's pre-1985 asset is worth $1 million at 30 June 2027.",
+      "She sells it in 2030 for $1.5 million."
+    ],
+    "result": "She is taxed on $1.5 million less her $1 million cost base indexed for inflation since July 2027. All the growth before July 2027 stays exempt.",
+    "sourceUrl": "https://parlinfo.aph.gov.au/parlInfo/download/legislation/ems/r7493_ems_a90ad43e-17d7-4cd3-859b-84ac4e6f3dea/upload_pdf/JC018386.pdf"
+  },
+  "actions": [
+    { "text": "Plan for evidence of each pre-1985 asset's market value just before 1 July 2027: a valuation as at that date, or the quoted price for listed shares." }
+  ],
+  "positions": [
+    { "party": "labor", "stance": "introduced", "summary": "Part of the CGT reform legislated in June 2026.", "statedOn": "2026-06-25", "sourceUrl": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/tax-reform-bill-passes-parliament" },
+    { "party": "coalition", "stance": "pledges-repeal", "summary": "Pledges to reverse Labor's changes to capital gains tax. It has not said specifically what it would do about pre-1985 assets.", "statedOn": "2026-10-06", "sourceUrl": "https://www.liberal.org.au/our-plan/tax" }
+  ],
+  "sources": [
+    { "url": "https://www.legislation.gov.au/C2026A00049/asmade/text", "title": "Treasury Laws Amendment (Tax Reform No. 1) Act 2026", "publisher": "Federal Register of Legislation", "tier": 1, "accessed": "2026-11-20" },
+    { "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7493", "title": "Treasury Laws Amendment (Tax Reform No. 1) Bill 2026: bill homepage", "publisher": "Parliament of Australia", "tier": 1, "accessed": "2026-11-20" },
+    { "url": "https://parlinfo.aph.gov.au/parlInfo/download/legislation/ems/r7493_ems_a90ad43e-17d7-4cd3-859b-84ac4e6f3dea/upload_pdf/JC018386.pdf", "title": "Explanatory Memorandum", "publisher": "Parliament of Australia", "tier": 1, "accessed": "2026-11-20" },
+    { "url": "https://budget.gov.au/content/factsheets/download/tax-explainers-negative-gearing-capital-gains-tax.pdf", "title": "Tax explainer: negative gearing and capital gains tax", "publisher": "Budget 2026-27, Australian Government", "tier": 1, "accessed": "2026-11-20" },
+    { "url": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/tax-reform-bill-passes-parliament", "title": "Tax reform bill passes Parliament", "publisher": "Treasurer", "tier": 2, "accessed": "2026-11-20" },
+    { "url": "https://www.liberal.org.au/our-plan/tax", "title": "Our plan for lower taxes", "publisher": "Liberal Party of Australia", "tier": 2, "accessed": "2026-11-20" }
+  ],
+  "caveats": [],
+  "lastVerified": "2026-11-20"
+}

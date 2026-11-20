@@ -1,0 +1,79 @@
+name: Deploy
+
+# Builds and publishes the static site to GitHub Pages.
+# Runs on every push to main, on demand (the PR gate dispatches it after auto-merging),
+# and daily so countdowns stay correct and the stale-data alarm fires even if research fails.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 20 * * *' # ~06:00-07:00 Sydney time
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  issues: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  SITE_URL: ${{ vars.SITE_URL || 'https://luka4apps.github.io' }}
+  BASE_PATH: ${{ vars.BASE_PATH || '/taxshift' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run validate
+      - run: npm test
+      - run: npm run build
+      - run: npm run test:built
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
+
+  stale-alarm:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - id: check
+        run: node scripts/stale-check.ts
+      - name: Open an issue (emails the owner) if research has stopped
+        if: steps.check.outputs.stale == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create stale-data --color E5007D --description "Daily research has not run" --force
+          open=$(gh issue list --label stale-data --state open --json number --jq 'length')
+          if [ "$open" = "0" ]; then
+            gh issue create --label stale-data \
+              --title "Taxshift data is stale: daily research hasn't run for 3+ days" \
+              --body "The site now shows a stale-data banner. Check the Claude cloud routine (claude.ai/code → Routines) and its last run. See docs/04-operations.md."
+          fi

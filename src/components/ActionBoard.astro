@@ -1,0 +1,60 @@
+---
+import Countdown from './Countdown.astro';
+import type { ActionItem, ActionSplit } from '../lib/actions.ts';
+import { formatDate } from '../lib/dates.ts';
+import { href } from '../lib/site.ts';
+
+interface Props {
+  split: ActionSplit;
+}
+const { split } = Astro.props;
+const cols: { key: 'actNow' | 'prepare'; title: string; sub: string; items: ActionItem[] }[] = [
+  { key: 'actNow', title: 'Law: act now', sub: 'Parliament has passed these. Get your records and structure ready.', items: split.actNow },
+  { key: 'prepare', title: 'Proposed: prepare', sub: 'Not law yet. Understand them and plan, but don’t act as if they’ve passed.', items: split.prepare },
+];
+---
+
+<div class="board">
+  {
+    cols.map((c) => (
+      <section class={`col ${c.key}`} aria-labelledby={`col-${c.key}`}>
+        <h3 class="display" id={`col-${c.key}`}>{c.title}</h3>
+        <p class="sub">{c.sub}</p>
+        {c.items.length === 0 ? (
+          <p class="muted">Nothing here for this group right now.</p>
+        ) : (
+          <ol>
+            {c.items.map((a) => (
+              <li>
+                <p>{a.text}</p>
+                <p class="meta mono">
+                  <a href={href(`changes/${a.measureId}/`)}>{a.measureTitle}</a>
+                  {a.deadline && (
+                    <span class="due">
+                      By {formatDate(a.deadline)} · <Countdown date={a.deadline} />
+                    </span>
+                  )}
+                </p>
+              </li>
+            ))}
+          </ol>
+        )}
+      </section>
+    ))
+  }
+</div>
+
+<style>
+  .board { display: grid; gap: var(--s6); }
+  .col { border-top: var(--rule-heavy) solid var(--ink); padding-top: var(--s3); }
+  .prepare { border-top-style: dashed; }
+  h3 { font-size: clamp(36px, 5vw, 52px); }
+  .actNow h3 { color: var(--shift); }
+  .sub { margin: var(--s2) 0 var(--s4); color: var(--muted); }
+  ol { padding-left: 1.4em; display: grid; gap: var(--s4); }
+  li::marker { font: 500 14px var(--font-mono); }
+  li p:first-child { font-weight: 600; }
+  .meta { font-size: 13px; margin-top: var(--s1); display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); text-transform: uppercase; letter-spacing: 0.04em; }
+  .due { background: var(--shift); color: var(--on-shift); padding: 1px 6px; }
+  @media (min-width: 900px) { .board { grid-template-columns: 1fr 1fr; } }
+</style>

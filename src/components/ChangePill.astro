@@ -1,0 +1,88 @@
+---
+import Countdown from './Countdown.astro';
+import RiskLine from './RiskLine.astro';
+import Stamp from './Stamp.astro';
+import { formatDate } from '../lib/dates.ts';
+import { personaById } from '../lib/personas.ts';
+import { flipRisk } from '../lib/risk.ts';
+import type { Election, Measure, Party } from '../lib/schema.ts';
+import { buildToday, href } from '../lib/site.ts';
+import { deriveStatus, startLine } from '../lib/status.ts';
+
+interface Props {
+  measure: Measure;
+  parties: Party[];
+  election: Election;
+}
+const { measure: m, parties, election } = Astro.props;
+const status = deriveStatus(m, buildToday);
+const start = startLine(m, buildToday);
+const risk = flipRisk(m, parties, election);
+const who = m.personas.map((p) => personaById(p).short).join(' · ');
+---
+
+<article class={`pill tone-${status.tone}`} aria-labelledby={`pill-${m.id}`}>
+  <div class="top">
+    <span class="kicker">{who}</span>
+    <Stamp status={status} />
+  </div>
+  <h3 class="display title" id={`pill-${m.id}`}>
+    <a href={href(`changes/${m.id}/`)}>{m.shortTitle}</a>
+  </h3>
+  <p class="big display" aria-describedby={`cap-${m.id}`}>{m.bigStat.value}</p>
+  <p class="kicker cap" id={`cap-${m.id}`}>{m.bigStat.caption}</p>
+  <p class="shiftline">
+    <s><span class="sr-only">Was: </span>{m.shift.from}</s>
+    <span class="arrow" aria-hidden="true">→</span>
+    <mark><span class="sr-only">Now: </span>{m.shift.to}</mark>
+  </p>
+  <div class="when mono">
+    {
+      start ? (
+        <p>
+          <span class="when-label">{start.prefix}</span> <strong>{formatDate(start.date)}</strong>
+          {start.countdown && (
+            <>
+              {' · '}
+              <Countdown date={start.date} />
+            </>
+          )}
+        </p>
+      ) : (
+        <p>{status.label}</p>
+      )
+    }
+    {start && (status.tone === 'proposed' || status.stamp === 'Passed') && <p class="muted">{status.label}</p>}
+  </div>
+  <RiskLine risk={risk} />
+  <p class="more"><a href={href(`changes/${m.id}/`)} aria-hidden="true" tabindex="-1">Details, examples and sources →</a></p>
+</article>
+
+<style>
+  .pill {
+    position: relative; display: grid; gap: var(--s3); align-content: start;
+    border-top: var(--rule-heavy) solid var(--ink); padding: var(--s4) 0 var(--s5);
+    border-bottom: var(--rule-thin) solid var(--rule);
+  }
+  .tone-law-pending { border-top-color: var(--shift); }
+  .tone-proposed { border-top-style: dashed; }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: var(--s3); min-height: 40px; }
+  .title { font-size: clamp(30px, 4vw, 38px); }
+  .title a { text-decoration: none; }
+  .title a::after { content: ''; position: absolute; inset: 0; } /* whole card clickable */
+  .title a:focus-visible { outline: none; }
+  .pill:has(.title a:focus-visible) { outline: 3px solid var(--focus); outline-offset: 6px; }
+  .pill:hover .title a { text-decoration: underline; text-decoration-color: var(--shift); text-decoration-thickness: 4px; }
+  .big { font-size: clamp(72px, 10vw, 104px); line-height: 0.82; margin-top: var(--s2); }
+  .tone-law-pending .big { color: var(--shift); }
+  .cap { color: var(--muted); max-width: 34ch; }
+  .shiftline { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: baseline; font-weight: 600; font-size: 16px; line-height: 1.3; }
+  .shiftline s { color: var(--muted); text-decoration-thickness: 2px; }
+  mark { background: var(--ink); color: var(--paper); padding: 2px 6px; }
+  .tone-law-pending mark { background: var(--shift); color: var(--on-shift); }
+  .when { font-size: 14px; display: grid; gap: 2px; border-top: var(--rule-thin) solid var(--ink); padding-top: var(--s3); }
+  .when-label { text-transform: uppercase; letter-spacing: 0.06em; }
+  .more { font: 500 13px var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
+  .more a { position: relative; z-index: 1; }
+  .pill :global(.risk) { position: relative; z-index: 1; }
+</style>

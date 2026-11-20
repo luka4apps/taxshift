@@ -1,0 +1,57 @@
+---
+import '@fontsource-variable/big-shoulders-display';
+import '@fontsource-variable/public-sans';
+import '@fontsource/dm-mono/500.css';
+import '../styles/global.css';
+import Masthead from '../components/Masthead.astro';
+import Footer from '../components/Footer.astro';
+import { getData, href, SITE_NAME, TAGLINE } from '../lib/site.ts';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Nav path of the current section, e.g. "timeline/". */
+  current?: string;
+  bigMast?: boolean;
+}
+
+const { title, description = `Australian tax law changes for property investors, share investors, SMSFs and business owners. ${TAGLINE}`, current = '', bigMast = false } = Astro.props;
+const { meta } = getData();
+const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME}: Australian investor tax changes, tracked daily`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(href('og.png'), Astro.site);
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={href('favicon.svg')} />
+    <link rel="alternate" type="application/rss+xml" title="Taxshift change log" href={href('rss.xml')} />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <Masthead meta={meta} current={current} big={bigMast} />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer meta={meta} />
+    <script>
+      import { hydrateLive } from '../scripts/live.ts';
+      hydrateLive();
+    </script>
+  </body>
+</html>

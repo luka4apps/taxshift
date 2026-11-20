@@ -1,0 +1,50 @@
+/* Taxshift design tokens — loud broadsheet (docs/03-brand.md).
+   Primitive → semantic. Components use semantic tokens only. */
+:root {
+  /* primitives */
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --magenta-600: #e5007d;
+  --magenta-400: #ff4fa8;
+  --grey-100: #f2f2f2;
+  --grey-300: #d9d9d9;
+  --grey-700: #4a4a4a;
+
+  /* semantic */
+  --ink: var(--black);
+  --paper: var(--white);
+  --shift: var(--magenta-600);       /* the one accent: change, risk, emphasis */
+  --on-shift: var(--white);
+  --rule: var(--grey-300);
+  --muted: var(--grey-700);
+  --wash: var(--grey-100);
+  --focus: var(--magenta-600);
+
+  --font-display: 'Big Shoulders Display Variable', 'Arial Narrow', Impact, sans-serif;
+  --font-body: 'Public Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, 'Cascadia Mono', Menlo, monospace;
+
+  --rule-heavy: 10px;
+  --rule-mid: 4px;
+  --rule-thin: 2px;
+
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+
+  --max: 1240px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --dur: 180ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #f4f4f4;
+    --paper: #0c0c0c;
+    --shift: var(--magenta-400);
+    --on-shift: #0c0c0c;
+    --rule: #2e2e2e;
+    --muted: #b5b5b5;
+    --wash: #161616;
+    --focus: var(--magenta-400);
+  }
+}

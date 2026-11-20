@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import { getData } from '../lib/site.ts';
+
+const { glossary } = getData();
+const terms = [...glossary].sort((a, b) => a.term.localeCompare(b.term));
+const name = (slug: string) => glossary.find((g) => g.slug === slug)?.term ?? slug;
+---
+
+<Base title="Glossary of investor tax terms" description="Plain-English definitions: CGT discount, indexation, negative gearing, grandfathering, LRBA, Division 296 and more." current="glossary/">
+  <section class="wrap section">
+    <div class="section-head">
+      <p class="kicker">Plain English</p>
+      <h1 class="display">Glossary</h1>
+    </div>
+    <dl class="terms">
+      {
+        terms.map((g) => (
+          <div id={g.slug} class="term">
+            <dt class="display">{g.term}</dt>
+            <dd>
+              <p>{g.definition}</p>
+              {g.related.length > 0 && (
+                <p class="kicker rel">
+                  See also: {g.related.map((r, i) => (<>{i > 0 && ' · '}<a href={`#${r}`}>{name(r)}</a></>))}
+                </p>
+              )}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+</Base>
+
+<style>
+  h1 { font-size: clamp(56px, 10vw, 120px); }
+  .terms { display: grid; gap: 0; }
+  .term { display: grid; gap: var(--s2); padding: var(--s4) 0; border-top: var(--rule-thin) solid var(--ink); scroll-margin-top: var(--s5); }
+  .term:target { background: var(--wash); }
+  dt { font-size: 32px; }
+  dd { max-width: 68ch; display: grid; gap: var(--s2); }
+  .rel { color: var(--muted); }
+  @media (min-width: 900px) { .term { grid-template-columns: 1fr 2fr; } }
+</style>

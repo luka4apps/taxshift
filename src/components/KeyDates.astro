@@ -1,0 +1,42 @@
+---
+import Countdown from './Countdown.astro';
+import { formatDate } from '../lib/dates.ts';
+import { href } from '../lib/site.ts';
+import type { DateGroup } from '../lib/timeline.ts';
+
+interface Props {
+  groups: DateGroup[];
+}
+const { groups } = Astro.props;
+const clean = (label: string) => label.replace(/: starts$/, '');
+---
+
+<ol class="keydates">
+  {
+    groups.map((g) => {
+      const election = g.items.every((i) => i.kind === 'election');
+      return (
+        <li class={election ? 'is-election' : ''}>
+          <time class="display d" datetime={g.date}>{formatDate(g.date)}</time>
+          <span class="mono cd"><Countdown date={g.date} /></span>
+          <ul>
+            {g.items.map((i) => (
+              <li>{i.measureId ? <a href={href(`changes/${i.measureId}/`)}>{clean(i.label)}</a> : i.label}</li>
+            ))}
+          </ul>
+        </li>
+      );
+    })
+  }
+</ol>
+
+<style>
+  .keydates { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: var(--s4); }
+  .keydates > li { border-top: var(--rule-mid) solid var(--ink); padding-top: var(--s3); display: grid; gap: var(--s2); align-content: start; }
+  .d { font-size: clamp(40px, 5vw, 56px); color: var(--shift); }
+  .cd { font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; }
+  ul { list-style: none; padding: 0; display: grid; gap: var(--s1); font-weight: 600; }
+  ul li::before { content: '→ '; color: var(--shift); }
+  .is-election { background: var(--wash); padding-inline: var(--s3); border-top-style: dashed; }
+  .is-election .d { color: var(--ink); }
+</style>

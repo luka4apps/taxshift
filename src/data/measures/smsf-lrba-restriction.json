@@ -1,0 +1,180 @@
+{
+  "id": "smsf-lrba-restriction",
+  "title": "SMSF borrowing to buy property restricted to business real property",
+  "shortTitle": "SMSF property borrowing restricted",
+  "headline": "New SMSF limited recourse loans can only buy business real property. Homes, vacant land and holiday houses now need cash.",
+  "summary": "A Greens amendment to the Budget tax reform Act stops super funds entering new limited recourse borrowing arrangements (LRBAs) to buy real property unless it is business real property. Existing loans, refinancing of them, and contracts exchanged before 10 August 2026 are protected.",
+  "category": "super",
+  "jurisdiction": "federal",
+  "personas": [
+    "smsf",
+    "property"
+  ],
+  "priority": 3,
+  "announcedOn": "2026-06-23",
+  "effectiveDate": "2026-08-10",
+  "history": [
+    {
+      "date": "2026-06-23",
+      "stage": "announced",
+      "note": "Government agrees to support a Greens amendment",
+      "sourceUrl": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/government-another-step-closer-delivering-tax-reforms"
+    },
+    {
+      "date": "2026-06-25",
+      "stage": "passed-parliament",
+      "note": "Senate agrees Greens amendments; House agrees the same day",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7493"
+    },
+    {
+      "date": "2026-06-26",
+      "stage": "royal-assent",
+      "note": "Treasury Laws Amendment (Tax Reform No. 1) Act 2026, Schedule 5; commences 45 days after assent",
+      "sourceUrl": "https://www.legislation.gov.au/C2026A00049/asmade/text"
+    }
+  ],
+  "bigStat": {
+    "value": "BRP only",
+    "caption": "new SMSF property loans: business real property only"
+  },
+  "shift": {
+    "from": "Any property via an LRBA",
+    "to": "Business real property only"
+  },
+  "before": [
+    "An SMSF could borrow under a limited recourse borrowing arrangement (LRBA) to buy almost any single asset, including residential property, vacant land and holiday homes."
+  ],
+  "after": [
+    "From 10 August 2026, real property bought under a new LRBA must be business real property (used wholly and exclusively in a business) when the loan starts and for its whole life.",
+    "Residential property can still be bought by an SMSF with cash.",
+    "LRBAs over non-property assets are not affected. Loans from related parties are caught too."
+  ],
+  "exemptions": [
+    "LRBAs entered into before 10 August 2026.",
+    "Refinancing an existing LRBA over the same asset, with the same or a new lender.",
+    "Purchases under a binding contract exchanged before 10 August 2026, even if the loan or settlement happened later.",
+    "Business real property, including qualifying primary production land."
+  ],
+  "workedExample": {
+    "title": "Off-the-plan contract exchanged before the start date",
+    "steps": [
+      "An SMSF exchanges a binding off-the-plan contract for a residential unit before 10 August 2026.",
+      "Its LRBA finance is approved after 10 August 2026 and settlement happens 12 months later."
+    ],
+    "result": "The ATO says the new restriction does not apply, because the contract was exchanged before 10 August 2026.",
+    "sourceUrl": "https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/self-managed-super-funds-smsf/smsf-investing/restrictions-on-smsf-investments/smsf-borrowing-restrictions/limited-recourse-borrowing-arrangements/changes-to-limited-recourse-borrowing-arrangements"
+  },
+  "actions": [
+    {
+      "text": "Keep evidence of the date each property contract was exchanged and each LRBA was entered into.",
+      "personas": [
+        "smsf"
+      ]
+    },
+    {
+      "text": "Before any new property LRBA, confirm the property is business real property and will stay that way for the whole loan, including any vacancy.",
+      "personas": [
+        "smsf"
+      ]
+    },
+    {
+      "text": "Get advice before increasing or materially varying an existing LRBA: only refinancing of the same asset is clearly protected.",
+      "personas": [
+        "smsf"
+      ]
+    },
+    {
+      "text": "Watch for the final ATO rulings: consultation on drafts SMSFR 2012/1DC and SMSFR 2009/1DC closes 27 November 2026.",
+      "personas": [
+        "smsf"
+      ],
+      "deadline": "2026-11-27"
+    }
+  ],
+  "positions": [
+    {
+      "party": "labor",
+      "stance": "supports",
+      "summary": "Accepted the Greens amendment, saying these loans are under 1% of residential property borrowing and existing loans are not affected.",
+      "statedOn": "2026-06-23",
+      "sourceUrl": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/government-another-step-closer-delivering-tax-reforms"
+    },
+    {
+      "party": "coalition",
+      "stance": "opposes",
+      "summary": "Shadow Treasurer Tim Wilson called it \"a direct assault on Australian retirees\". No repeal pledge found.",
+      "statedOn": "2026-06-23",
+      "sourceUrl": "https://www.theadviser.com.au/broker/48590-opposition-investor-groups-blast-smsf-borrowing-crackdown"
+    },
+    {
+      "party": "greens",
+      "stance": "introduced",
+      "summary": "Moved the amendment as part of its deal to pass the CGT and negative gearing law, saying it \"closed the SMSF exemption\".",
+      "statedOn": "2026-06-23",
+      "sourceUrl": "https://greens.org.au/news/media-release/greens-will-support-amended-tax-package-pass-parliament-close-loophole-self"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.legislation.gov.au/C2026A00049/asmade/text",
+      "title": "Treasury Laws Amendment (Tax Reform No. 1) Act 2026, Schedule 5",
+      "publisher": "Federal Register of Legislation",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7493",
+      "title": "Treasury Laws Amendment (Tax Reform No. 1) Bill 2026: bill homepage",
+      "publisher": "Parliament of Australia",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/self-managed-super-funds-smsf/smsf-investing/restrictions-on-smsf-investments/smsf-borrowing-restrictions/limited-recourse-borrowing-arrangements/changes-to-limited-recourse-borrowing-arrangements",
+      "title": "Changes to limited recourse borrowing arrangements",
+      "publisher": "Australian Taxation Office",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/self-managed-super-funds-smsf/smsf-newsroom/changes-to-lrbas-for-property-from-10-august",
+      "title": "Changes to LRBAs for property from 10 August",
+      "publisher": "Australian Taxation Office",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.ato.gov.au/about-ato/ato-advice-and-guidance/advice-under-development-program/advice-under-development-superannuation-issues",
+      "title": "Advice under development: superannuation issues",
+      "publisher": "Australian Taxation Office",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/government-another-step-closer-delivering-tax-reforms",
+      "title": "Government another step closer to delivering tax reforms",
+      "publisher": "Treasurer (joint media release)",
+      "tier": 2,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://greens.org.au/news/media-release/greens-will-support-amended-tax-package-pass-parliament-close-loophole-self",
+      "title": "Greens will support amended tax package",
+      "publisher": "Australian Greens",
+      "tier": 2,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.theadviser.com.au/broker/48590-opposition-investor-groups-blast-smsf-borrowing-crackdown",
+      "title": "Opposition, investor groups blast SMSF borrowing crackdown",
+      "publisher": "The Adviser",
+      "tier": 3,
+      "accessed": "2026-11-20"
+    }
+  ],
+  "caveats": [
+    "Commentary often calls this a ban. The ATO says LRBAs are not banned: the restriction covers any real property that is not business real property, not only homes.",
+    "It is not settled whether options, expressions of interest or conditional contracts made before 10 August 2026 are protected. The ATO only addresses binding contracts; final rulings are pending."
+  ],
+  "lastVerified": "2026-11-20"
+}

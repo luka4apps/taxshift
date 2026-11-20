@@ -1,0 +1,80 @@
+[
+  {
+    "slug": "capital-gains-tax",
+    "term": "Capital gains tax (CGT)",
+    "definition": "Not a separate tax: when you sell an asset such as property or shares for more than it cost you, the gain is added to your taxable income for that year.",
+    "related": ["cgt-discount", "cost-base", "indexation"]
+  },
+  {
+    "slug": "cgt-discount",
+    "term": "CGT discount",
+    "definition": "Under the old rules, individuals and trusts that held an asset for at least 12 months paid tax on only 50% of the capital gain. From 1 July 2027 it is replaced by indexation for gains made after that date.",
+    "related": ["capital-gains-tax", "indexation"]
+  },
+  {
+    "slug": "cost-base",
+    "term": "Cost base",
+    "definition": "What an asset cost you for tax purposes: the purchase price plus costs such as stamp duty, legal fees and capital improvements. The capital gain is the sale price minus the cost base.",
+    "related": ["capital-gains-tax", "indexation"]
+  },
+  {
+    "slug": "indexation",
+    "term": "Indexation",
+    "definition": "Increasing an asset's cost base in line with inflation (CPI), so you are taxed only on the gain above inflation rather than on the full nominal gain.",
+    "related": ["cost-base", "cgt-discount"]
+  },
+  {
+    "slug": "negative-gearing",
+    "term": "Negative gearing",
+    "definition": "When the costs of an investment property, such as interest and repairs, exceed the rent it earns. Under the old rules that loss reduced tax on your salary and other income.",
+    "related": ["quarantined-losses", "grandfathering"]
+  },
+  {
+    "slug": "quarantined-losses",
+    "term": "Quarantined losses",
+    "definition": "Losses that can only be used against a particular kind of income. From 2027-28, losses on affected established homes can only offset residential rental income and gains; the rest carries forward.",
+    "related": ["negative-gearing"]
+  },
+  {
+    "slug": "grandfathering",
+    "term": "Grandfathering",
+    "definition": "Letting existing arrangements keep the old rules when a law changes. For negative gearing, property contracted before 7:30pm AEST on 12 May 2026 keeps the old treatment until it is sold.",
+    "related": ["negative-gearing"]
+  },
+  {
+    "slug": "royal-assent",
+    "term": "Royal assent",
+    "definition": "The Governor-General's signature that turns a bill passed by both houses of Parliament into an Act, which is law. An Act can still start on a later date.",
+    "related": []
+  },
+  {
+    "slug": "lrba",
+    "term": "LRBA (limited recourse borrowing arrangement)",
+    "definition": "The only way an SMSF can borrow to buy an asset. If the loan fails, the lender can only claim the asset bought with it, not the fund's other assets.",
+    "related": ["business-real-property", "smsf"]
+  },
+  {
+    "slug": "business-real-property",
+    "term": "Business real property",
+    "definition": "Land and buildings used wholly and exclusively in a business, such as an office, shop or factory, and some primary production land. From 10 August 2026 it is the only real property a new SMSF LRBA can buy.",
+    "related": ["lrba"]
+  },
+  {
+    "slug": "smsf",
+    "term": "SMSF (self-managed super fund)",
+    "definition": "A private super fund with up to six members, who are usually also its trustees and are responsible for following super and tax law.",
+    "related": ["lrba", "total-super-balance"]
+  },
+  {
+    "slug": "total-super-balance",
+    "term": "Total super balance",
+    "definition": "The combined value of all your super interests across every fund. Division 296 uses it to decide whether the extra tax applies, measured at 30 June 2027 for the first year.",
+    "related": ["smsf"]
+  },
+  {
+    "slug": "discretionary-trust",
+    "term": "Discretionary trust",
+    "definition": "Often called a family trust: the trustee decides each year which beneficiaries receive the trust's income, which has allowed income to be directed to family members on lower tax rates.",
+    "related": []
+  }
+]

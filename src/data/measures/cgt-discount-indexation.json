@@ -1,0 +1,85 @@
+{
+  "id": "cgt-discount-indexation",
+  "title": "CGT 50% discount replaced by indexation and a 30% minimum tax",
+  "shortTitle": "CGT discount ends",
+  "headline": "Gains made after 1 July 2027 lose the 50% CGT discount: the cost base is indexed to inflation and individuals pay at least 30%. Earlier gains keep the discount.",
+  "summary": "Individuals and trusts lose the 50% CGT discount for growth after 30 June 2027. Instead the cost base is indexed to inflation, and individuals pay at least 30% tax on those gains. Assets held at 30 June 2027 are split at their market value just before 1 July 2027: growth up to then keeps the 50% discount. It covers property, shares, ETFs, crypto and other CGT assets. The main residence exemption is unchanged.",
+  "category": "cgt",
+  "jurisdiction": "federal",
+  "personas": ["property", "shares", "business"],
+  "priority": 1,
+  "announcedOn": "2026-05-12",
+  "effectiveDate": "2027-07-01",
+  "effectiveLabel": "CGT events on or after 1 July 2027",
+  "history": [
+    { "date": "2026-05-12", "stage": "announced", "note": "Budget night, 7:30pm AEST", "sourceUrl": "https://budget.gov.au/content/factsheets/download/tax-explainers-negative-gearing-capital-gains-tax.pdf" },
+    { "date": "2026-05-28", "stage": "bill-introduced", "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7493" },
+    { "date": "2026-06-04", "stage": "passed-house", "note": "Third reading 94 to 49", "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7493" },
+    { "date": "2026-06-25", "stage": "passed-parliament", "note": "Senate passed with 30 Government and 3 Greens amendments; House agreed", "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7493" },
+    { "date": "2026-06-26", "stage": "royal-assent", "note": "Acts No. 49 and No. 50 of 2026", "sourceUrl": "https://www.legislation.gov.au/C2026A00049/asmade/text" }
+  ],
+  "bigStat": { "value": "30%", "caption": "minimum tax on capital gains made after 1 July 2027" },
+  "shift": { "from": "50% discount", "to": "Indexation + 30% minimum" },
+  "before": [
+    "Individuals and trusts that held an asset for more than 12 months paid tax on only 50% of the capital gain.",
+    "The discount applied to the whole gain, however long the asset was held."
+  ],
+  "after": [
+    "Growth after 1 July 2027: the cost base is indexed to inflation (quarterly CPI) instead of halving the gain.",
+    "Individuals pay at least 30% on those post-2027 gains, unless they receive income support such as the Age Pension or JobSeeker during the year.",
+    "Growth up to 1 July 2027 keeps the 50% discount. It is measured using market value just before 1 July 2027; an optional apportioning method is still in draft.",
+    "Qualifying new residential builds can keep the 50% discount instead, and then the minimum tax does not apply."
+  ],
+  "exemptions": [
+    "Your main residence: the exemption is unchanged.",
+    "Gains that accrued before 1 July 2027 keep the 50% discount.",
+    "Companies and super funds are outside the change; complying super funds keep their one-third discount.",
+    "Qualifying new residential dwellings can keep the 50% discount and stay out of the minimum tax.",
+    "Individuals receiving income support payments during the year are exempt from the 30% minimum tax."
+  ],
+  "workedExample": {
+    "title": "Budget example: Jane's investment property",
+    "steps": [
+      "Bought 1 July 2022 for $800,000. Worth $1,131,371 at 1 July 2027. Sold 1 July 2032 for $1.6 million. Inflation 2.5% a year.",
+      "Growth to 1 July 2027 is $331,371. The 50% discount leaves $165,685 taxable.",
+      "Growth after: $1,600,000 less the indexed value of $1,280,042 leaves $319,958 taxable.",
+      "Total taxable gain: $485,643, against $400,000 if the 50% discount still applied."
+    ],
+    "result": "At a 47% marginal rate including Medicare levy, tax of $228,252 instead of $188,000.",
+    "sourceUrl": "https://budget.gov.au/content/factsheets/download/tax-explainers-negative-gearing-capital-gains-tax.pdf"
+  },
+  "actions": [
+    { "text": "Keep records of every purchase, cost and capital improvement with its date: indexation is worked out item by item, by quarter." },
+    { "text": "Don't get a valuation dated before 1 July 2027. The ATO says the value needed is market value immediately before that date, and only when you sell.", "personas": ["property", "business"] },
+    { "text": "For listed shares and ETFs, record the quoted price at 30 June 2027.", "personas": ["shares"], "deadline": "2027-06-30" },
+    { "text": "Keep evidence for both a valuation and the apportioning method: you choose when you lodge the return for the year you sell." },
+    { "text": "Model future sales with indexation and the 30% minimum, especially if your income will be low when you sell, such as in retirement." }
+  ],
+  "positions": [
+    { "party": "labor", "stance": "introduced", "summary": "Legislated the change, describing it as returning capital gains tax to its original intent from 1 July 2027.", "statedOn": "2026-06-25", "sourceUrl": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/tax-reform-bill-passes-parliament" },
+    { "party": "coalition", "stance": "pledges-repeal", "summary": "Will \"reverse Labor's changes to capital gains tax\". Angus Taylor: a Coalition government he leads will repeal them. No repeal date or transition rules given.", "statedOn": "2026-11-16", "sourceUrl": "https://www.liberal.org.au/our-plan/tax" },
+    { "party": "greens", "stance": "wants-stronger", "summary": "Voted for the law after amendments removed a Treasurer power to extend the 50% discount. Want concessions ended rather than grandfathered.", "statedOn": "2026-06-23", "sourceUrl": "https://greens.org.au/news/media-release/greens-will-support-amended-tax-package-pass-parliament-close-loophole-self" },
+    { "party": "one-nation", "stance": "pledges-repeal", "summary": "Completely opposes the CGT changes and would restore the 50% discount if elected.", "statedOn": "2026-05-27", "sourceUrl": "https://thenightly.com.au/politics/pauline-hanson-announces-one-nation-negative-gearing-cgt-plan-says-labor-taking-investment-opportunity-away-c-22344013" },
+    { "party": "teals", "stance": "wants-amendment", "summary": "Back the housing reform but want business assets and shares treated differently. Allegra Spender proposes a flat 40% discount for active assets while keeping the 30% minimum.", "statedOn": "2026-11-17", "sourceUrl": "https://www.theadviser.com.au/borrower/49240-greens-weigh-cgt-roadblock-as-chalmers-rejects-rival-plan" }
+  ],
+  "sources": [
+    { "url": "https://budget.gov.au/content/factsheets/download/tax-explainers-negative-gearing-capital-gains-tax.pdf", "title": "Tax explainer: negative gearing and capital gains tax", "publisher": "Budget 2026-27, Australian Government", "tier": 1, "accessed": "2026-11-20" },
+    { "url": "https://www.legislation.gov.au/C2026A00049/asmade/text", "title": "Treasury Laws Amendment (Tax Reform No. 1) Act 2026", "publisher": "Federal Register of Legislation", "tier": 1, "accessed": "2026-11-20" },
+    { "url": "https://www.legislation.gov.au/C2026A00050/asmade/text", "title": "Income Tax Rates Amendment (Tax Reform No. 1) Act 2026", "publisher": "Federal Register of Legislation", "tier": 1, "accessed": "2026-11-20" },
+    { "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7493", "title": "Treasury Laws Amendment (Tax Reform No. 1) Bill 2026: bill homepage", "publisher": "Parliament of Australia", "tier": 1, "accessed": "2026-11-20" },
+    { "url": "https://parlinfo.aph.gov.au/parlInfo/download/legislation/ems/r7493_ems_a90ad43e-17d7-4cd3-859b-84ac4e6f3dea/upload_pdf/JC018386.pdf", "title": "Explanatory Memorandum", "publisher": "Parliament of Australia", "tier": 1, "accessed": "2026-11-20" },
+    { "url": "https://www.ato.gov.au/individuals-and-families/investments-and-assets/capital-gains-tax/capital-gains-tax-reform", "title": "Capital gains tax reform", "publisher": "Australian Taxation Office", "tier": 1, "accessed": "2026-11-20" },
+    { "url": "https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/tax-professionals-newsroom/cgt-reform-guidance-and-market-valuations", "title": "CGT reform guidance and market valuations", "publisher": "Australian Taxation Office", "tier": 1, "accessed": "2026-11-20" },
+    { "url": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/tax-reform-bill-passes-parliament", "title": "Tax reform bill passes Parliament", "publisher": "Treasurer", "tier": 2, "accessed": "2026-11-20" },
+    { "url": "https://www.liberal.org.au/our-plan/tax", "title": "Our plan for lower taxes", "publisher": "Liberal Party of Australia", "tier": 2, "accessed": "2026-11-20" },
+    { "url": "https://greens.org.au/news/media-release/greens-will-support-amended-tax-package-pass-parliament-close-loophole-self", "title": "Greens will support amended tax package", "publisher": "Australian Greens", "tier": 2, "accessed": "2026-11-20" },
+    { "url": "https://thenightly.com.au/politics/pauline-hanson-announces-one-nation-negative-gearing-cgt-plan-says-labor-taking-investment-opportunity-away-c-22344013", "title": "Pauline Hanson announces One Nation negative gearing and CGT plan", "publisher": "The Nightly", "tier": 3, "accessed": "2026-11-20" },
+    { "url": "https://www.theadviser.com.au/borrower/49240-greens-weigh-cgt-roadblock-as-chalmers-rejects-rival-plan", "title": "Greens weigh CGT roadblock as Chalmers rejects rival plan", "publisher": "The Adviser", "tier": 3, "accessed": "2026-11-20" }
+  ],
+  "caveats": [
+    "The optional apportioning method is still a draft, and may only cover real property and assets without a quoted market price.",
+    "Exemptions from the minimum tax for testamentary trusts, deceased estates and special disability trusts are in the Tax Reform No. 3 Bill, which is not law yet.",
+    "Some edge cases, such as part-year residents and managed funds or ETFs that are attribution trusts, depend on bills still before Parliament."
+  ],
+  "lastVerified": "2026-11-20"
+}

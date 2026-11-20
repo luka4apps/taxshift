@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import { href } from '../lib/site.ts';
+---
+
+<Base title="Page not found">
+  <section class="wrap section">
+    <p class="kicker">404</p>
+    <h1 class="display">This page shifted.</h1>
+    <p><a class="btn" href={href()}>Back to all changes</a></p>
+  </section>
+</Base>
+
+<style>
+  h1 { font-size: clamp(56px, 12vw, 140px); margin: var(--s4) 0 var(--s6); }
+</style>

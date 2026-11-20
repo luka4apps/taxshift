@@ -1,0 +1,42 @@
+---
+import { formatDate, todayInSydney } from '../lib/dates.ts';
+import type { Meta } from '../lib/schema.ts';
+import { href, REPO_URL } from '../lib/site.ts';
+
+interface Props {
+  meta: Meta;
+}
+const { meta } = Astro.props;
+---
+
+<footer class="foot">
+  <div class="wrap grid">
+    <div>
+      <p class="display mark">Tax<span>shift</span></p>
+      <p class="kicker">Last checked {formatDate(todayInSydney(new Date(meta.lastChecked)), 'long')}</p>
+    </div>
+    <div class="disclaimer">
+      <p><strong>General information only.</strong> Taxshift is not financial, tax or legal advice and doesn't consider your circumstances. Laws and proposals change; always check the official sources linked on each page and speak to a registered tax agent or licensed adviser before acting.</p>
+      <p>Independent and non-partisan. Not affiliated with any government, party or adviser. Research is AI-assisted and checked daily; material changes are reviewed by a person before publishing.</p>
+    </div>
+    <ul class="links">
+      <li><a href={href('about/')}>How we research</a></li>
+      <li><a href={href('changelog/')}>Change log</a></li>
+      <li><a href={href('rss.xml')}>RSS feed</a></li>
+      <li><a href={`${REPO_URL}/issues/new`}>Report an error</a></li>
+      <li><a href={REPO_URL}>Open data on GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .foot { background: var(--ink); color: var(--paper); margin-top: var(--s8); padding-block: var(--s7); }
+  .foot a { color: var(--paper); }
+  .grid { display: grid; gap: var(--s6); }
+  .mark { font-size: 64px; }
+  .mark span { color: var(--shift); }
+  .disclaimer { display: grid; gap: var(--s3); max-width: 64ch; font-size: 15px; }
+  .links { list-style: none; padding: 0; display: grid; gap: var(--s2); font: 500 13px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
+  .links a { display: inline-block; padding-block: var(--s2); }
+  @media (min-width: 900px) { .grid { grid-template-columns: 1fr 2fr 1fr; } }
+</style>

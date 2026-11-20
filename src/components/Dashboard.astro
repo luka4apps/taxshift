@@ -1,0 +1,103 @@
+---
+import ActionBoard from './ActionBoard.astro';
+import ChangePill from './ChangePill.astro';
+import KeyDates from './KeyDates.astro';
+import FlipMatrix from './FlipMatrix.astro';
+import KeyNumbers from './KeyNumbers.astro';
+import PersonaNav from './PersonaNav.astro';
+import { splitActions } from '../lib/actions.ts';
+import { formatDate } from '../lib/dates.ts';
+import { measuresFor, personaById } from '../lib/personas.ts';
+import type { Persona } from '../lib/schema.ts';
+import { buildToday, getData, href, TAGLINE } from '../lib/site.ts';
+import { summarise } from '../lib/summary.ts';
+import { buildTimeline, keyDates } from '../lib/timeline.ts';
+
+interface Props {
+  persona?: Persona;
+}
+const { persona } = Astro.props;
+const { measures: all, parties, election, changelog } = getData();
+const measures = measuresFor(all, persona);
+const summary = summarise(measures, parties, election, buildToday);
+const next = keyDates(buildTimeline(measures, election, buildToday), buildToday, 6);
+const actions = splitActions(measures, buildToday, persona);
+const latest = [...changelog].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
+const who = persona ? personaById(persona).label : null;
+---
+
+<section class="wrap hero" aria-labelledby="hero-h">
+  <p class="kicker">{who ? `For ${who.toLowerCase()}` : 'Budget 2026-27 and beyond'}</p>
+  <h1 class="display" id="hero-h">{TAGLINE}</h1>
+  <KeyNumbers summary={summary} />
+  <PersonaNav current={persona} />
+</section>
+
+<section class="wrap" aria-labelledby="changes-h">
+  <div class="section-head">
+    <p class="kicker">The changes · most important first</p>
+    <h2 class="display" id="changes-h">What changed</h2>
+  </div>
+  <div class="pills">
+    {measures.map((m) => <ChangePill measure={m} parties={parties} election={election} />)}
+  </div>
+</section>
+
+<section class="wrap section" aria-labelledby="dates-h">
+  <div class="section-head">
+    <p class="kicker">Key dates</p>
+    <h2 class="display" id="dates-h">When it bites</h2>
+  </div>
+  <KeyDates groups={next} />
+  <p class="seeall"><a class="btn" href={href('timeline/')}>Full timeline →</a></p>
+</section>
+
+<section class="wrap section" aria-labelledby="flip-h">
+  <div class="section-head">
+    <p class="kicker">Party positions · election due by {formatDate(election.latestPossible)}</p>
+    <h2 class="display" id="flip-h">Could it flip?</h2>
+    <p>Laws can be repealed by a future government. Here is what each party says it would do, from their own statements.</p>
+  </div>
+  <FlipMatrix measures={measures} parties={parties} election={election} />
+  <p class="seeall"><a class="btn" href={href('could-it-flip/')}>What would need to happen →</a></p>
+</section>
+
+<section class="wrap section" aria-labelledby="do-h">
+  <div class="section-head">
+    <p class="kicker">General information, not advice</p>
+    <h2 class="display" id="do-h">What to do now</h2>
+  </div>
+  <ActionBoard split={actions} />
+</section>
+
+<section class="wrap section" aria-labelledby="log-h">
+  <div class="section-head">
+    <p class="kicker">Checked every day</p>
+    <h2 class="display" id="log-h">Latest updates</h2>
+  </div>
+  <ol class="log">
+    {
+      latest.map((c) => (
+        <li>
+          <time class="mono" datetime={c.date}>{formatDate(c.date)}</time>
+          <span>{c.summary}</span>
+        </li>
+      ))
+    }
+  </ol>
+  <p class="seeall">
+    <a class="btn" href={href('changelog/')}>All updates →</a>
+    <a class="btn" href={href('rss.xml')}>RSS feed</a>
+  </p>
+</section>
+
+<style>
+  .hero { padding-top: var(--s6); }
+  .hero h1 { font-size: clamp(44px, 7vw, 96px); max-width: 18ch; margin: var(--s3) 0 var(--s5); }
+  .pills { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: var(--s5) var(--s6); }
+  .seeall { margin-top: var(--s5); display: flex; flex-wrap: wrap; gap: var(--s2); }
+  .log { list-style: none; padding: 0; }
+  .log li { display: grid; gap: var(--s1); padding: var(--s3) 0; border-top: var(--rule-thin) solid var(--ink); }
+  .log time { font-size: 13px; text-transform: uppercase; }
+  @media (min-width: 720px) { .log li { grid-template-columns: 160px 1fr; } }
+</style>
