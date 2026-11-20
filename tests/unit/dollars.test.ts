@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { deleteAcrossSeparator, formatWholeDollars, parseWholeDollars, reformatDollarField } from '../../src/lib/dollars.ts';
+import { deleteAcrossSeparator, formatWholeDollars, parseWholeDollars, pasteDollars, reformatDollarField } from '../../src/lib/dollars.ts';
 
 // Dollar fields in the calculator show Australian dollars as the reader types ("$1,131,371").
 // Whole dollars only: cents are dropped, never folded into the dollar amount.
@@ -79,6 +79,27 @@ describe('reformatDollarField', () => {
   it('should_empty_the_field_when_no_digits_remain', () => {
     // Given the reader deleted the last digit, leaving only the $
     expect(reformatDollarField('$', 1)).toEqual({ value: '', caret: 0 });
+  });
+});
+
+describe('pasteDollars', () => {
+  it('should_drop_only_the_pasted_cents_and_keep_the_digits_after_the_caret', () => {
+    // Given $1,234 with the caret after the 2 (index 4)
+    // When the reader pastes 1.5
+    const edit = pasteDollars('$1,234', 4, 4, '1.5');
+    // Then only the pasted ".5" is dropped: 12 + 1 + 34
+    expect(edit).toEqual({ value: '$12,134', caret: 5 });
+  });
+
+  it('should_replace_the_selection_with_the_pasted_amount', () => {
+    // Given the whole of $800,000 selected
+    const edit = pasteDollars('$800,000', 0, 8, '$1,131,371.40');
+    // Then the field holds the pasted dollars and the caret ends after them
+    expect(edit).toEqual({ value: '$1,131,371', caret: 10 });
+  });
+
+  it('should_ignore_text_around_a_pasted_amount', () => {
+    expect(pasteDollars('', 0, 0, 'AUD 1,234,567,890 ')).toEqual({ value: '$1,234,567,890', caret: 14 });
   });
 });
 

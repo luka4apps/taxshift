@@ -14,7 +14,7 @@ const examples = [
 ];
 const initial: CgtInput = { ...jane, inflation: jane.inflation / 100 };
 // Whole-dollar fields: shown as "$1,131,371" and reformatted as the reader types (src/scripts/dollar-field.ts).
-const dollarField = { type: 'text', inputmode: 'numeric', autocomplete: 'off', maxlength: 16, 'data-dollars': '' };
+const dollarField = { type: 'text', inputmode: 'numeric', autocomplete: 'off', 'data-dollars': '' };
 ---
 
 <Base title="CGT calculator: old rules vs new rules" description="Estimate capital gains tax on a sale after 1 July 2027 under the new indexation and 30% minimum tax rules, compared with the 50% discount." current="calculator/">
@@ -35,7 +35,7 @@ const dollarField = { type: 'text', inputmode: 'numeric', autocomplete: 'off', m
         <fieldset>
           <legend class="kicker">The asset</legend>
           <label>Purchase date (contract date)<input type="date" name="purchaseDate" required value={jane.purchaseDate} /></label>
-          <label>What it cost you<span class="help">Price plus stamp duty, legal fees and improvements</span><input {...dollarField} name="costBase" required value={formatWholeDollars(jane.costBase)} /></label>
+          <label>What it cost you<span class="help">Price plus stamp duty, legal fees and improvements</span><input {...dollarField} name="costBase" required pattern="\$?0*[1-9][\d,]*" title="An amount of $1 or more" value={formatWholeDollars(jane.costBase)} /></label>
           <label>Value just before 1 July 2027 (optional)<span class="help">Only for assets you hold on 30 June 2027. Leave blank to estimate with the draft apportioning method.</span><input {...dollarField} name="valueAt2027" value={formatWholeDollars(jane.valueAt2027)} /></label>
           <label class="check"><input type="checkbox" name="newDwelling" /> It's a qualifying new build and I keep the 50% discount</label>
         </fieldset>

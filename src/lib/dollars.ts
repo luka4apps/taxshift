@@ -53,6 +53,15 @@ export function reformatDollarField(raw: string, caret: number): FieldEdit {
 }
 
 /**
+ * Pastes text over the selection [start, end). Only the pasted text loses its cents and other
+ * characters; the field's own digits either side are kept.
+ */
+export function pasteDollars(value: string, start: number, end: number, pasted: string): FieldEdit {
+  const inserted = digitsOf(dollarsPart(pasted));
+  return reformatDollarField(value.slice(0, start) + inserted + value.slice(end), start + inserted.length);
+}
+
+/**
  * Backspace or Delete next to a "$" or "," would only remove a character that comes straight back.
  * Remove the nearest digit in that direction instead. Returns null when the neighbour is a digit
  * (the browser's own delete is right) or there is nothing to delete.
