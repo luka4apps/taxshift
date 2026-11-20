@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { compareCgt, type CgtInput } from '../lib/cgt.ts';
+import { formatWholeDollars } from '../lib/dollars.ts';
 import { href } from '../lib/site.ts';
 import { renderCgtResult } from '../scripts/cgt-view.ts';
 
@@ -12,6 +13,8 @@ const examples = [
   { label: 'Pre-1985 asset', values: { purchaseDate: '1984-06-01', costBase: 60000, valueAt2027: 1200000, saleDate: '2030-07-01', salePrice: 1400000, otherIncome: 90000, inflation: 2.5, incomeSupport: false, newDwelling: false } },
 ];
 const initial: CgtInput = { ...jane, inflation: jane.inflation / 100 };
+// Whole-dollar fields: shown as "$1,131,371" and reformatted as the reader types (src/scripts/dollar-field.ts).
+const dollarField = { type: 'text', inputmode: 'numeric', autocomplete: 'off', 'data-dollars': '' };
 ---
 
 <Base title="CGT calculator: old rules vs new rules" description="Estimate capital gains tax on a sale after 1 July 2027 under the new indexation and 30% minimum tax rules, compared with the 50% discount." current="calculator/">
@@ -32,20 +35,20 @@ const initial: CgtInput = { ...jane, inflation: jane.inflation / 100 };
         <fieldset>
           <legend class="kicker">The asset</legend>
           <label>Purchase date (contract date)<input type="date" name="purchaseDate" required value={jane.purchaseDate} /></label>
-          <label>What it cost you<span class="help">Price plus stamp duty, legal fees and improvements</span><input type="number" name="costBase" required min="1" step="1" inputmode="numeric" value={jane.costBase} /></label>
-          <label>Value just before 1 July 2027 (optional)<span class="help">Only for assets you hold on 30 June 2027. Leave blank to estimate with the draft apportioning method.</span><input type="number" name="valueAt2027" min="0" step="1" inputmode="numeric" value={jane.valueAt2027} /></label>
+          <label>What it cost you<span class="help">Price plus stamp duty, legal fees and improvements</span><input {...dollarField} name="costBase" required pattern="\$?0*[1-9][\d,]*" title="An amount of $1 or more" value={formatWholeDollars(jane.costBase)} /></label>
+          <label>Value just before 1 July 2027 (optional)<span class="help">Only for assets you hold on 30 June 2027. Leave blank to estimate with the draft apportioning method.</span><input {...dollarField} name="valueAt2027" value={formatWholeDollars(jane.valueAt2027)} /></label>
           <label class="check"><input type="checkbox" name="newDwelling" /> It's a qualifying new build and I keep the 50% discount</label>
         </fieldset>
 
         <fieldset>
           <legend class="kicker">The sale</legend>
           <label>Sale date (on or after 1 July 2027)<input type="date" name="saleDate" required min="2027-07-01" value={jane.saleDate} /></label>
-          <label>Sale price<span class="help">After selling costs</span><input type="number" name="salePrice" required min="0" step="1" inputmode="numeric" value={jane.salePrice} /></label>
+          <label>Sale price<span class="help">After selling costs</span><input {...dollarField} name="salePrice" required value={formatWholeDollars(jane.salePrice)} /></label>
         </fieldset>
 
         <fieldset>
           <legend class="kicker">You, in the year you sell</legend>
-          <label>Other taxable income<span class="help">Salary, rent, dividends and so on</span><input type="number" name="otherIncome" required min="0" step="1" inputmode="numeric" value={jane.otherIncome} /></label>
+          <label>Other taxable income<span class="help">Salary, rent, dividends and so on</span><input {...dollarField} name="otherIncome" required value={formatWholeDollars(jane.otherIncome)} /></label>
           <label class="check"><input type="checkbox" name="incomeSupport" /> I'll receive income support such as the Age Pension or JobSeeker that year</label>
           <label>Assumed inflation, % a year<input type="number" name="inflation" required min="0" max="20" step="0.1" value={jane.inflation} /></label>
         </fieldset>
@@ -78,7 +81,7 @@ const initial: CgtInput = { ...jane, inflation: jane.inflation / 100 };
   legend { padding: 0 var(--s2) 0 0; }
   label { display: grid; gap: var(--s1); font-weight: 600; }
   .help { font-weight: 400; font-size: 14px; color: var(--muted); }
-  input[type='number'], input[type='date'] {
+  input[type='text'], input[type='number'], input[type='date'] {
     min-height: 48px; padding: var(--s2) var(--s3); font: 500 18px var(--font-mono);
     border: var(--rule-thin) solid var(--ink); border-radius: 0; background: var(--paper);
   }

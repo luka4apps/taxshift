@@ -44,6 +44,20 @@ describe('built site', () => {
     expect(read('calculator/index.html')).toMatch(/more tax|less tax|No change in tax/);
   });
 
+  it('should_render_every_calculator_dollar_field_as_formatted_whole_dollars', () => {
+    // Given the built calculator page
+    const html = read('calculator/index.html');
+    // When we look at each dollar field
+    for (const [name, shown] of [['costBase', '$800,000'], ['valueAt2027', '$1,131,371'], ['salePrice', '$1,600,000'], ['otherIncome', '$150,000']]) {
+      const tag = html.match(new RegExp(`<input[^>]*name="${name}"[^>]*>`))?.[0] ?? '';
+      // Then it is a numeric-keyboard text field marked for formatting, pre-filled in Australian dollars
+      expect(tag, name).toContain('inputmode="numeric"');
+      expect(tag, name).toContain('data-dollars');
+      expect(tag, name).not.toContain('type="number"');
+      expect(tag, name).toContain(`value="${shown}"`);
+    }
+  });
+
   it('should_publish_a_valid_rss_feed_with_change_log_items', () => {
     const rss = read('rss.xml');
     expect(rss).toContain('<rss');

@@ -1,21 +1,33 @@
 import { compareCgt, type CgtInput } from '../lib/cgt.ts';
+import { parseWholeDollars } from '../lib/dollars.ts';
 import { renderCgtResult } from './cgt-view.ts';
+import { mountDollarField, setDollarField } from './dollar-field.ts';
 
 function readInput(form: HTMLFormElement): CgtInput {
   const f = new FormData(form);
-  const num = (k: string) => Number(String(f.get(k) ?? '').replace(/[$,\s]/g, ''));
-  const value = String(f.get('valueAt2027') ?? '').trim();
+  const text = (k: string) => String(f.get(k) ?? '');
+  const dollars = (k: string) => parseWholeDollars(text(k));
   return {
-    purchaseDate: String(f.get('purchaseDate')),
-    costBase: num('costBase'),
-    saleDate: String(f.get('saleDate')),
-    salePrice: num('salePrice'),
-    valueAt2027: value ? num('valueAt2027') : undefined,
-    otherIncome: num('otherIncome'),
-    inflation: num('inflation') / 100,
+    purchaseDate: text('purchaseDate'),
+    costBase: dollars('costBase') ?? 0,
+    saleDate: text('saleDate'),
+    salePrice: dollars('salePrice') ?? 0,
+    valueAt2027: dollars('valueAt2027') ?? undefined,
+    otherIncome: dollars('otherIncome') ?? 0,
+    inflation: Number(text('inflation')) / 100,
     incomeSupport: f.get('incomeSupport') === 'on',
     newDwelling: f.get('newDwelling') === 'on',
   };
+}
+
+function fillExample(form: HTMLFormElement, example: Record<string, string | number | boolean>): void {
+  for (const [k, v] of Object.entries(example)) {
+    const el = form.elements.namedItem(k) as HTMLInputElement | null;
+    if (!el) continue;
+    if (el.type === 'checkbox') el.checked = Boolean(v);
+    else if (el.dataset.dollars !== undefined) setDollarField(el, String(v));
+    else el.value = String(v);
+  }
 }
 
 export function mountCalculator(form: HTMLFormElement, out: HTMLElement): void {
@@ -23,6 +35,7 @@ export function mountCalculator(form: HTMLFormElement, out: HTMLElement): void {
     if (!form.reportValidity()) return;
     out.innerHTML = renderCgtResult(compareCgt(readInput(form)));
   };
+  form.querySelectorAll<HTMLInputElement>('input[data-dollars]').forEach(mountDollarField);
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     run();
@@ -30,13 +43,7 @@ export function mountCalculator(form: HTMLFormElement, out: HTMLElement): void {
   });
   form.querySelectorAll<HTMLButtonElement>('[data-example]').forEach((b) =>
     b.addEventListener('click', () => {
-      const ex = JSON.parse(b.dataset.example ?? '{}') as Record<string, string | boolean>;
-      for (const [k, v] of Object.entries(ex)) {
-        const el = form.elements.namedItem(k) as HTMLInputElement | null;
-        if (!el) continue;
-        if (el.type === 'checkbox') el.checked = Boolean(v);
-        else el.value = String(v);
-      }
+      fillExample(form, JSON.parse(b.dataset.example ?? '{}') as Record<string, string | number | boolean>);
       run();
     }),
   );
