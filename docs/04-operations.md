@@ -14,6 +14,27 @@ How Taxshift runs itself, and what the owner does when it doesn't.
 | | Material → `needs-review` label, @mention to owner | |
 | ~06:00–07:00 | Daily deploy (refreshes countdowns) + stale-data alarm | `.github/workflows/deploy.yml` |
 
+## One-time setup for the research routine
+
+Found by the first test run on 20 Nov 2026. Without these, the routine can't open PRs or read primary sources.
+
+1. **GitHub access:** install the Claude GitHub App on `luka4apps/taxshift` (github.com/apps/claude → Configure → select the repo). Without it, push and branch creation return 403.
+2. **Network allowlist:** the cloud environment must be able to reach these hosts (claude.ai/code → environment settings → network access):
+
+| Purpose | Hosts |
+|---|---|
+| Parliament and legislation | `www.aph.gov.au`, `parlinfo.aph.gov.au`, `www.legislation.gov.au`, `api.prod.legislation.gov.au` |
+| Tax office and Treasury | `www.ato.gov.au`, `treasury.gov.au`, `ministers.treasury.gov.au`, `consult.treasury.gov.au`, `budget.gov.au` |
+| Elections | `www.aec.gov.au`, `aec.gov.au` |
+| Party positions | `www.liberal.org.au`, `greens.org.au`, `www.onenation.org.au`, `nationals.org.au`, `www.alp.org.au` |
+| Reputable media | `www.abc.net.au`, `www.afr.com`, `www.smh.com.au` |
+
+Web search works without the allowlist; reading pages does not.
+
+3. **Parliament blocks bots.** `aph.gov.au` and `parlinfo.aph.gov.au` return 403 to any automated reader, even with the host allowed. The agent therefore detects royal assent from the Federal Register of Legislation API and passage from Treasury media releases (see `agent/daily-research.md`). When you review a material PR, use the aph.gov.au link in its body to confirm the stage yourself.
+
+To change the allowlist: claude.ai/code/routines → Taxshift daily research → ⋯ → Edit → Advanced settings → Cloud environment → hover **Default** → settings icon → Network access **Limited**, keep "Allow package managers" ticked → Allowed domains (one per line) → Save changes.
+
 ## What counts as material
 
 Anything except: `meta.json`, a measure's `lastVerified`, newly added sources, a source's `accessed` date, and new change-log entries. Any file outside `src/data/` is always material. The rule lives in `src/lib/classify.ts` (`MINOR_RULES`).
