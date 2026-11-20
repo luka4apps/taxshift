@@ -4,5 +4,12 @@
     "measureId": null,
     "kind": "material",
     "summary": "Taxshift launched. Every measure was checked against the Acts, Parliament bill pages and ATO guidance as at 20 November 2026."
+  },
+  {
+    "date": "2026-11-20",
+    "measureId": "tax-reform-no-4",
+    "kind": "material",
+    "summary": "Now tracking Tax Reform No. 4: an optional 50% CGT discount for start-up investors, narrower electric car FBT exemption and monthly PAYG instalments. It passed the House on 29 October 2026 and is before the Senate.",
+    "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7566"
   }
 ]
