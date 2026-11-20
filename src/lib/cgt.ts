@@ -8,7 +8,7 @@
  *  - indexation is projected with an assumed inflation rate, as Treasury's own examples do
  *    (the real factor uses quarterly CPI, s 960-275);
  *  - 30% minimum tax top-up on post-2027 gains (Div 119, Rates Act s 12AA);
- *  - resident income tax rates from 2027-28, excluding Medicare levy and offsets.
+ *  - resident income tax rates from 2027-28 plus an approximate 2% Medicare levy on the taxable gain; no offsets.
  * Verified against the Budget explainer and Explanatory Memorandum worked examples (tests/unit/cgt.test.ts).
  */
 import { daysBetween, type IsoDate } from './dates.ts';
@@ -77,12 +77,25 @@ export interface CgtInput {
   newDwelling?: boolean;
 }
 
-export interface OldRules {
+/** Approximate Medicare levy: 2% of the taxable gain (reduced or nil on low incomes and for some people). */
+const MEDICARE_RATE = 0.02;
+
+/** What the reader compares: total tax including Medicare, and that as a share of the full capital gain. */
+export interface Totals {
+  medicare: number;
+  total: number;
+  /** total ÷ full capital gain (0 when there is no gain). */
+  effectiveRate: number;
+}
+
+export interface OldRules extends Totals {
+  /** Amount added to taxable income: the capital gain after the 50% discount. */
   taxableGain: number;
+  /** Income tax only. */
   tax: number;
 }
 
-export interface NewRules {
+export interface NewRules extends Totals {
   valueAt2027?: number;
   valueEstimated: boolean;
   /** Growth up to 1 July 2027 (negative = loss). */
@@ -99,7 +112,16 @@ export interface NewRules {
 }
 
 export type CgtResult =
-  | { ok: true; old: OldRules; next: NewRules; difference: number; notes: string[] }
+  | {
+      ok: true;
+      /** Sale price minus cost base: the real gain, before any discount or indexation (negative = loss). */
+      capitalGain: number;
+      old: OldRules;
+      next: NewRules;
+      /** next.total − old.total */
+      difference: number;
+      notes: string[];
+    }
   | { ok: false; error: string };
 
 const money = (n: number) => `$${Math.round(n).toLocaleString('en-AU')}`;
@@ -114,10 +136,16 @@ function validate(i: CgtInput): string | null {
   return null;
 }
 
-function oldRules(i: CgtInput, held12: boolean, preCgt: boolean): OldRules {
+function oldRules(i: CgtInput, held12: boolean, preCgt: boolean): Omit<OldRules, keyof Totals> {
   const gross = Math.max(0, i.salePrice - i.costBase);
   const taxableGain = preCgt ? 0 : held12 ? gross * 0.5 : gross;
   return { taxableGain, tax: Math.round(taxOn(i.otherIncome + taxableGain) - taxOn(i.otherIncome)) };
+}
+
+function totals(taxableGain: number, tax: number, capitalGain: number): Totals {
+  const medicare = Math.round(Math.max(0, taxableGain) * MEDICARE_RATE);
+  const total = tax + medicare;
+  return { medicare, total, effectiveRate: capitalGain > 0 ? total / capitalGain : 0 };
 }
 
 export function compareCgt(i: CgtInput): CgtResult {
@@ -130,7 +158,7 @@ export function compareCgt(i: CgtInput): CgtResult {
   const notes: string[] = [];
   const heldAt2027 = daysBetween(i.purchaseDate, NEW_RULES_START) > 0;
 
-  let next: NewRules;
+  let next: Omit<NewRules, keyof Totals>;
   if (i.newDwelling) {
     const taxableGain = Math.max(0, i.salePrice - i.costBase) * (held12 ? 0.5 : 1);
     const incomeTax = taxOn(i.otherIncome + taxableGain) - taxOn(i.otherIncome);
@@ -167,7 +195,10 @@ export function compareCgt(i: CgtInput): CgtResult {
 
   if (!held12) notes.push('Held for 12 months or less: no discount or indexation under either set of rules.');
   notes.push(`Indexation projected at ${(i.inflation * 100).toFixed(1)}% a year; the real factor uses quarterly CPI.`);
-  notes.push('Uses 2027-28 resident tax rates for both columns. Excludes the Medicare levy, tax offsets and any other gains or losses.');
+  notes.push('Uses 2027-28 resident tax rates for both columns, plus an approximate 2% Medicare levy on the taxable gain (lower on low incomes). Excludes tax offsets and any other gains or losses.');
 
-  return { ok: true, old, next, difference: next.tax - old.tax, notes };
+  const capitalGain = i.salePrice - i.costBase;
+  const oldFull: OldRules = { ...old, ...totals(old.taxableGain, old.tax, capitalGain) };
+  const nextFull: NewRules = { ...next, ...totals(next.taxableGain, next.tax, capitalGain) };
+  return { ok: true, capitalGain, old: oldFull, next: nextFull, difference: nextFull.total - oldFull.total, notes };
 }

@@ -149,6 +149,51 @@ describe('compareCgt', () => {
     expect(r.ok && r.next.taxableGain).toBe(0);
   });
 
+  describe('figures shown to the reader (regression: owner review, 20 Nov 2026)', () => {
+    // Given the owner's scenario: $549,986 cost, $1,131,371 at July 2027, sold July 2032 for $1,499,986
+    const r = compareCgt({
+      purchaseDate: '2022-07-01',
+      costBase: 549_986,
+      valueAt2027: 1_131_371,
+      saleDate: '2032-07-01',
+      salePrice: 1_499_986,
+      otherIncome: 150_000,
+      inflation: 0.025,
+    });
+
+    it('should_report_the_full_capital_gain_separately_from_the_discounted_taxable_gain', () => {
+      expect(r.ok).toBe(true);
+      if (!r.ok) return;
+      expect(r.capitalGain).toBe(950_000);
+      expect(r.old.taxableGain).toBe(475_000);
+      expect(r.old.tax).toBe(210_550);
+      expect(Math.round(r.next.taxableGain)).toBe(510_636);
+      expect(r.next.tax).toBe(226_586);
+    });
+
+    it('should_add_an_approximate_2_percent_medicare_levy_on_the_taxable_gain', () => {
+      if (!r.ok) throw new Error('expected ok');
+      expect(r.old.medicare).toBe(9_500);
+      expect(r.old.total).toBe(220_050);
+      expect(r.next.medicare).toBe(10_213);
+      expect(r.next.total).toBe(236_799);
+      expect(r.difference).toBe(236_799 - 220_050);
+    });
+
+    it('should_express_total_tax_as_a_share_of_the_full_capital_gain', () => {
+      if (!r.ok) throw new Error('expected ok');
+      expect(r.old.effectiveRate).toBeCloseTo(0.2316, 3);
+      expect(r.next.effectiveRate).toBeCloseTo(0.2493, 3);
+    });
+  });
+
+  it('should_report_zero_effective_rate_when_there_is_no_gain', () => {
+    const r = compareCgt({ purchaseDate: '2027-08-01', costBase: 100_000, saleDate: '2030-08-01', salePrice: 90_000, otherIncome: 80_000, inflation: 0.025 });
+    expect(r.ok && r.capitalGain).toBe(-10_000);
+    expect(r.ok && r.old.effectiveRate).toBe(0);
+    expect(r.ok && r.next.total).toBe(0);
+  });
+
   it('should_reject_a_sale_before_the_new_rules_start', () => {
     const r = compareCgt({ purchaseDate: '2020-01-01', costBase: 1, saleDate: '2027-06-30', salePrice: 2, otherIncome: 0, inflation: 0.025 });
     expect(r).toEqual({ ok: false, error: 'Choose a sale date on or after 1 July 2027: earlier sales use the old rules.' });

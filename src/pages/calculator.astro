@@ -57,7 +57,7 @@ const initial: CgtInput = { ...jane, inflation: jane.inflation / 100 };
         <Fragment set:html={renderCgtResult(compareCgt(initial))} />
       </div>
     </div>
-    <p class="fine muted">Estimates for one asset sold by one Australian-resident individual. They ignore other gains and losses, offsets, the Medicare levy and your personal circumstances. Not tax advice: check with a registered tax agent.</p>
+    <p class="fine muted">Estimates for one asset sold by one Australian-resident individual. They include an approximate 2% Medicare levy but ignore other gains and losses, offsets and your personal circumstances. Not tax advice: check with a registered tax agent.</p>
   </section>
 </Base>
 
@@ -90,14 +90,19 @@ const initial: CgtInput = { ...jane, inflation: jane.inflation / 100 };
   .calc-out:focus { outline: none; }
   .calc-out :global(.calc-cols) { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }
   .calc-out :global(.calc-col) { border-top: var(--rule-mid) solid var(--ink); padding-top: var(--s2); display: grid; gap: var(--s1); }
-  .calc-out :global(.calc-big) { font-size: clamp(48px, 7vw, 84px); }
+  .calc-out :global(.calc-gain) { font-size: 14px; }
+  .calc-out :global(.calc-gain strong) { font: 900 28px/1 var(--font-display); letter-spacing: 0; margin-left: var(--s2); }
+  .calc-out :global(.calc-big) { font-size: clamp(40px, 5.5vw, 72px); overflow-wrap: anywhere; }
   .calc-out :global(.is-new .calc-big) { color: var(--shift); }
   .calc-out :global(.calc-diff) { font-size: clamp(36px, 5vw, 56px); }
   .calc-out :global(.calc-diff.is-more) { background: var(--shift); color: var(--on-shift); padding: var(--s2) var(--s3) 0; justify-self: start; }
   .calc-out :global(.calc-table) { width: 100%; border-collapse: collapse; }
   .calc-out :global(.calc-table caption) { text-align: left; padding-bottom: var(--s2); }
-  .calc-out :global(.calc-table th), .calc-out :global(.calc-table td) { text-align: left; padding: var(--s2) 0; border-bottom: 1px solid var(--rule); font-weight: 400; }
-  .calc-out :global(.calc-table td) { text-align: right; }
+  .calc-out :global(.calc-table th), .calc-out :global(.calc-table td) { text-align: left; padding: var(--s2) 0; border-bottom: 1px solid var(--rule); font-weight: 400; vertical-align: top; }
+  .calc-out :global(.calc-table td), .calc-out :global(.calc-table thead th + th) { text-align: right; padding-left: var(--s3); white-space: nowrap; }
+  .calc-out :global(.calc-table thead th) { border-bottom: var(--rule-thin) solid var(--ink); }
+  .calc-out :global(.calc-table .is-strong th), .calc-out :global(.calc-table .is-strong td) { font-weight: 800; border-top: var(--rule-thin) solid var(--ink); }
+  .calc-out :global(.calc-table td:last-child) { color: var(--shift); }
   .calc-out :global(.calc-notes) { padding-left: 1.2em; display: grid; gap: var(--s2); font-size: 15px; color: var(--muted); }
   .calc-out :global(.calc-error) { background: var(--shift); color: var(--on-shift); padding: var(--s3); font-weight: 600; }
   .fine { margin-top: var(--s6); font-size: 14px; max-width: 72ch; }
