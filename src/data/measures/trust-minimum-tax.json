@@ -195,12 +195,20 @@
       "publisher": "ABC News",
       "tier": 3,
       "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/government-another-step-closer-delivering-trusts-reform",
+      "title": "Government another step closer to delivering trusts reform",
+      "publisher": "Treasurer",
+      "tier": 2,
+      "accessed": "2026-11-27"
     }
   ],
   "caveats": [
     "Some trade press reported a 1 July 2027 start. Parliament's documents and the ATO say 1 July 2028; 1 July 2027 is when the restructure window opens.",
     "Collection, PAYG instalment and reporting rules are still to come in later laws.",
-    "The bill may be amended in the Senate, for example on distributions to charities."
+    "The bill may be amended in the Senate, for example on distributions to charities.",
+    "On 25 November 2026 the Treasurer said a Government amendment would adjust the income exemption for genuine testamentary trusts, so people with existing wills do not need to redraft them to qualify. The release does not give the bill, the amendment wording or a vote date."
   ],
-  "lastVerified": "2026-11-23"
+  "lastVerified": "2026-11-27"
 }
