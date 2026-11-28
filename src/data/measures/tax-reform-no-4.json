@@ -6,18 +6,41 @@
   "summary": "An omnibus bill implementing Budget 2026-27 measures for start-ups and business: an optional 50% CGT discount for shares in eligible innovative start-ups (the Innovative Business CGT Concession), expanded venture capital incentives, an option to pay PAYG instalments monthly, a narrower FBT exemption for electric cars and a reworked R&D Tax Incentive. It passed the House without amendment on 29 October 2026 and is before the Senate.",
   "category": "business",
   "jurisdiction": "federal",
-  "personas": ["shares", "business"],
+  "personas": [
+    "shares",
+    "business"
+  ],
   "priority": 7,
   "announcedOn": "2026-05-12",
   "effectiveDate": "2027-07-01",
   "effectiveLabel": "Electric car changes from 1 April 2027; start-up CGT discount, venture capital and monthly PAYG from 1 July 2027; R&D changes from 1 July 2028",
   "history": [
-    { "date": "2026-05-12", "stage": "announced", "note": "Budget 2026-27", "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd028" },
-    { "date": "2026-10-27", "stage": "bill-introduced", "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7566" },
-    { "date": "2026-10-29", "stage": "passed-house", "note": "Passed without amendment; introduced in the Senate on 16 November 2026", "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7566" }
+    {
+      "date": "2026-05-12",
+      "stage": "announced",
+      "note": "Budget 2026-27",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd028"
+    },
+    {
+      "date": "2026-10-27",
+      "stage": "bill-introduced",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7566"
+    },
+    {
+      "date": "2026-10-29",
+      "stage": "passed-house",
+      "note": "Passed without amendment; introduced in the Senate on 16 November 2026",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7566"
+    }
   ],
-  "bigStat": { "value": "50%", "caption": "optional CGT discount kept for shares in eligible start-ups" },
-  "shift": { "from": "Start-up shares: indexation + 30% min", "to": "Optional 50% discount after 3 years" },
+  "bigStat": {
+    "value": "50%",
+    "caption": "optional CGT discount kept for shares in eligible start-ups"
+  },
+  "shift": {
+    "from": "Start-up shares: indexation + 30% min",
+    "to": "Optional 50% discount after 3 years"
+  },
   "before": [
     "From 1 July 2027 the 50% CGT discount ends for most assets, including start-up shares, replaced by indexation and a 30% minimum tax.",
     "Eligible electric cars below the luxury car tax threshold are fully exempt from FBT.",
@@ -35,21 +58,83 @@
     "Shares not issued directly by the company, such as those bought from other investors, don't qualify for the start-up discount."
   ],
   "actions": [
-    { "text": "Start-up investors: keep the issue date and documents for shares issued directly to you. The 3-year holding rule and company tests decide eligibility.", "personas": ["shares", "business"] },
-    { "text": "Weighing an electric car over $75,000 through salary packaging? If the bill passes, only leases already in place before 1 April 2027 keep the full FBT exemption.", "personas": ["business"], "deadline": "2027-03-31" },
-    { "text": "Watch the Senate vote: the bill needs the Greens or crossbench and is being debated alongside the trusts bill." }
+    {
+      "text": "Start-up investors: keep the issue date and documents for shares issued directly to you. The 3-year holding rule and company tests decide eligibility.",
+      "personas": [
+        "shares",
+        "business"
+      ]
+    },
+    {
+      "text": "Weighing an electric car over $75,000 through salary packaging? If the bill passes, only leases already in place before 1 April 2027 keep the full FBT exemption.",
+      "personas": [
+        "business"
+      ],
+      "deadline": "2027-03-31"
+    },
+    {
+      "text": "Watch the Senate vote: the bill needs the Greens or crossbench and is being debated alongside the trusts bill."
+    }
   ],
   "positions": [
-    { "party": "labor", "stance": "introduced", "summary": "Introduced the bill so tax concessions for investors target starting innovative businesses or new builds.", "statedOn": "2026-10-27", "sourceUrl": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/tax-reforms-support-innovation-and-investment" },
-    { "party": "coalition", "stance": "opposes", "summary": "Voted against the bill in the House. Its October savings package would abolish the electric car discount altogether.", "statedOn": "2026-10-29", "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd028" },
-    { "party": "greens", "stance": "supports", "summary": "Voted for the bill in the House.", "statedOn": "2026-10-29", "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd028" },
-    { "party": "one-nation", "stance": "opposes", "summary": "Voted against the bill in the House.", "statedOn": "2026-10-29", "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd028" },
-    { "party": "teals", "stance": "wants-amendment", "summary": "Most teal MPs voted for the bill, but Kate Chaney called the start-up concession \"narrow, complex and ambiguous\" and Allegra Spender wants an 'active asset' test and an independent review of the CGT reforms.", "statedOn": "2026-10-29", "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd028" }
+    {
+      "party": "labor",
+      "stance": "introduced",
+      "summary": "Introduced the bill so tax concessions for investors target starting innovative businesses or new builds.",
+      "statedOn": "2026-10-27",
+      "sourceUrl": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/tax-reforms-support-innovation-and-investment"
+    },
+    {
+      "party": "coalition",
+      "stance": "opposes",
+      "summary": "Voted against the bill in the House. Its October savings package would abolish the electric car discount altogether.",
+      "statedOn": "2026-10-29",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd028"
+    },
+    {
+      "party": "greens",
+      "stance": "supports",
+      "summary": "Voted for the bill in the House.",
+      "statedOn": "2026-10-29",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd028"
+    },
+    {
+      "party": "one-nation",
+      "stance": "opposes",
+      "summary": "Voted against the bill in the House.",
+      "statedOn": "2026-10-29",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd028"
+    },
+    {
+      "party": "teals",
+      "stance": "wants-amendment",
+      "summary": "Most teal MPs voted for the bill, but Kate Chaney called the start-up concession \"narrow, complex and ambiguous\" and Allegra Spender wants an 'active asset' test and an independent review of the CGT reforms.",
+      "statedOn": "2026-10-29",
+      "sourceUrl": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd028"
+    }
   ],
   "sources": [
-    { "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7566", "title": "Treasury Laws Amendment (Tax Reform No. 4) Bill 2026: bill homepage", "publisher": "Parliament of Australia", "tier": 1, "accessed": "2026-11-20" },
-    { "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd028", "title": "Bills Digest No. 28, 2026-27", "publisher": "Parliamentary Library", "tier": 1, "accessed": "2026-11-20" },
-    { "url": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/tax-reforms-support-innovation-and-investment", "title": "Tax reforms to support innovation and investment", "publisher": "Treasurer", "tier": 2, "accessed": "2026-11-20" }
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7566",
+      "title": "Treasury Laws Amendment (Tax Reform No. 4) Bill 2026: bill homepage",
+      "publisher": "Parliament of Australia",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2627/27bd028",
+      "title": "Bills Digest No. 28, 2026-27",
+      "publisher": "Parliamentary Library",
+      "tier": 1,
+      "accessed": "2026-11-20"
+    },
+    {
+      "url": "https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/tax-reforms-support-innovation-and-investment",
+      "title": "Tax reforms to support innovation and investment",
+      "publisher": "Treasurer",
+      "tier": 2,
+      "accessed": "2026-11-26"
+    }
   ],
   "caveats": [
     "The Department of Industry, Science and Resources is still finalising safe-harbour rules for the innovation tests.",
